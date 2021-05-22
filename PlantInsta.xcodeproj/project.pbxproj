@@ -3,27 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C9905112C0A37804AB9B3949 /* Pods_PlantInsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; };
+		F90D4A32263817FF00E9615E /* Servie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4A31263817FF00E9615E /* Servie.swift */; };
+		F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9215A09262EB87E00DE7CE4 /* WebViewController.swift */; };
+		F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */; };
+		F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94302D4263347CD0057399F /* TabBarViewController.swift */; };
+		F96C7F1B262D6915002F263A /* PlantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F1A262D6915002F263A /* PlantListViewController.swift */; };
+		F96C7F1E262D6930002F263A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F1D262D6930002F263A /* UploadViewController.swift */; };
+		F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F23262D6EA6002F263A /* MenuListViewController.swift */; };
+		F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */; };
 		F9CB29912629856E00144B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29902629856E00144B28 /* AppDelegate.swift */; };
 		F9CB29932629856E00144B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29922629856E00144B28 /* SceneDelegate.swift */; };
 		F9CB29952629856E00144B28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29942629856E00144B28 /* ViewController.swift */; };
 		F9CB29982629856E00144B28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CB29962629856E00144B28 /* Main.storyboard */; };
 		F9CB299A2629857100144B28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9CB29992629857100144B28 /* Assets.xcassets */; };
 		F9CB299D2629857100144B28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CB299B2629857100144B28 /* LaunchScreen.storyboard */; };
+		F9CB29A6262985D000144B28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9CB29A5262985D000144B28 /* GoogleService-Info.plist */; };
+		F9D3632A262DA154002460B3 /* PlantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36329262DA154002460B3 /* PlantCell.swift */; };
+		F9D3632F262DB1F3002460B3 /* PlantDiaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D3632E262DB1F3002460B3 /* PlantDiaryModel.swift */; };
+		F9D36353262E112C002460B3 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36352262E112C002460B3 /* FeedViewController.swift */; };
+		F9D36357262E1384002460B3 /* FeedPlantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36356262E1384002460B3 /* FeedPlantModel.swift */; };
+		F9D3635E262E1595002460B3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D3635D262E1595002460B3 /* FeedCell.swift */; };
+		F9D36361262E2691002460B3 /* BigImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36360262E2691002460B3 /* BigImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantInsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.debug.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.debug.xcconfig"; sourceTree = "<group>"; };
+		F90D4A31263817FF00E9615E /* Servie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servie.swift; sourceTree = "<group>"; };
+		F9215A09262EB87E00DE7CE4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F9215A0D262EC85600DE7CE4 /* PlantInsta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantInsta.entitlements; sourceTree = "<group>"; };
+		F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
+		F94302D4263347CD0057399F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "../New Group/TabBarViewController.swift"; sourceTree = "<group>"; };
+		F96C7F1A262D6915002F263A /* PlantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListViewController.swift; sourceTree = "<group>"; };
+		F96C7F1D262D6930002F263A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
+		F96C7F23262D6EA6002F263A /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
+		F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesirableSpec.swift; sourceTree = "<group>"; };
 		F9CB298D2629856E00144B28 /* PlantInsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantInsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CB29902629856E00144B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9CB29922629856E00144B28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F9CB29942629856E00144B28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F9CB29942629856E00144B28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../New Group/ViewController.swift"; sourceTree = "<group>"; };
 		F9CB29972629856E00144B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9CB29992629857100144B28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9CB299C2629857100144B28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F9CB299E2629857100144B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9CB29A5262985D000144B28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F9D36329262DA154002460B3 /* PlantCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantCell.swift; sourceTree = "<group>"; };
+		F9D3632E262DB1F3002460B3 /* PlantDiaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDiaryModel.swift; sourceTree = "<group>"; };
+		F9D36352262E112C002460B3 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		F9D36356262E1384002460B3 /* FeedPlantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlantModel.swift; sourceTree = "<group>"; };
+		F9D3635D262E1595002460B3 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		F9D36360262E2691002460B3 /* BigImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageViewController.swift; sourceTree = "<group>"; };
+		FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.release.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +66,79 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9905112C0A37804AB9B3949 /* Pods_PlantInsta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01E78D0C2CD34E4D847CA424 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */,
+				FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4CD0CA46791F2055E1A43761 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F9215A08262EB86300DE7CE4 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F96C7F23262D6EA6002F263A /* MenuListViewController.swift */,
+				F9215A09262EB87E00DE7CE4 /* WebViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		F9232BE72631615F00AAD5B0 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
+				F96C7F1D262D6930002F263A /* UploadViewController.swift */,
+				F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		F96C7F11262D62C0002F263A /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F9CB29962629856E00144B28 /* Main.storyboard */,
+				F9B6682F26516EB8005EE437 /* SignIn */,
+				F9232BE72631615F00AAD5B0 /* Upload */,
+				F9215A08262EB86300DE7CE4 /* Menu */,
+				F9D36350262E0E91002460B3 /* FeedList */,
+				F9D3634F262E0E6E002460B3 /* PlantDiary */,
+				F9CB29902629856E00144B28 /* AppDelegate.swift */,
+				F9CB29922629856E00144B28 /* SceneDelegate.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F9B6682F26516EB8005EE437 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				F9CB29942629856E00144B28 /* ViewController.swift */,
+				F94302D4263347CD0057399F /* TabBarViewController.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		F9CB29842629856E00144B28 = {
 			isa = PBXGroup;
 			children = (
 				F9CB298F2629856E00144B28 /* PlantInsta */,
 				F9CB298E2629856E00144B28 /* Products */,
+				01E78D0C2CD34E4D847CA424 /* Pods */,
+				4CD0CA46791F2055E1A43761 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +153,53 @@
 		F9CB298F2629856E00144B28 /* PlantInsta */ = {
 			isa = PBXGroup;
 			children = (
-				F9CB29902629856E00144B28 /* AppDelegate.swift */,
-				F9CB29922629856E00144B28 /* SceneDelegate.swift */,
-				F9CB29942629856E00144B28 /* ViewController.swift */,
-				F9CB29962629856E00144B28 /* Main.storyboard */,
+				F9215A0D262EC85600DE7CE4 /* PlantInsta.entitlements */,
+				F9D3632D262DB1B8002460B3 /* viewmodel */,
+				F9D3632C262DB1B2002460B3 /* model */,
+				F96C7F11262D62C0002F263A /* view */,
 				F9CB29992629857100144B28 /* Assets.xcassets */,
+				F9CB29A5262985D000144B28 /* GoogleService-Info.plist */,
 				F9CB299B2629857100144B28 /* LaunchScreen.storyboard */,
 				F9CB299E2629857100144B28 /* Info.plist */,
 			);
 			path = PlantInsta;
+			sourceTree = "<group>";
+		};
+		F9D3632C262DB1B2002460B3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F9D3632E262DB1F3002460B3 /* PlantDiaryModel.swift */,
+				F9D36356262E1384002460B3 /* FeedPlantModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F9D3632D262DB1B8002460B3 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+				F90D4A31263817FF00E9615E /* Servie.swift */,
+				F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */,
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		F9D3634F262E0E6E002460B3 /* PlantDiary */ = {
+			isa = PBXGroup;
+			children = (
+				F9D36329262DA154002460B3 /* PlantCell.swift */,
+				F96C7F1A262D6915002F263A /* PlantListViewController.swift */,
+			);
+			path = PlantDiary;
+			sourceTree = "<group>";
+		};
+		F9D36350262E0E91002460B3 /* FeedList */ = {
+			isa = PBXGroup;
+			children = (
+				F9D36352262E112C002460B3 /* FeedViewController.swift */,
+				F9D3635D262E1595002460B3 /* FeedCell.swift */,
+				F9D36360262E2691002460B3 /* BigImageViewController.swift */,
+			);
+			path = FeedList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "PlantInsta" */;
 			buildPhases = (
+				28E714DE44461D99C37D1B05 /* [CP] Check Pods Manifest.lock */,
 				F9CB29892629856E00144B28 /* Sources */,
 				F9CB298A2629856E00144B28 /* Frameworks */,
 				F9CB298B2629856E00144B28 /* Resources */,
+				3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */,
+				A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -125,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9CB299D2629857100144B28 /* LaunchScreen.storyboard in Resources */,
+				F9CB29A6262985D000144B28 /* GoogleService-Info.plist in Resources */,
 				F9CB299A2629857100144B28 /* Assets.xcassets in Resources */,
 				F9CB29982629856E00144B28 /* Main.storyboard in Resources */,
 			);
@@ -132,13 +271,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28E714DE44461D99C37D1B05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PlantInsta-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F9CB29892629856E00144B28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9D3632A262DA154002460B3 /* PlantCell.swift in Sources */,
+				F9D3632F262DB1F3002460B3 /* PlantDiaryModel.swift in Sources */,
+				F9D36353262E112C002460B3 /* FeedViewController.swift in Sources */,
+				F9D36357262E1384002460B3 /* FeedPlantModel.swift in Sources */,
+				F9D3635E262E1595002460B3 /* FeedCell.swift in Sources */,
+				F90D4A32263817FF00E9615E /* Servie.swift in Sources */,
+				F96C7F1B262D6915002F263A /* PlantListViewController.swift in Sources */,
+				F96C7F1E262D6930002F263A /* UploadViewController.swift in Sources */,
+				F9D36361262E2691002460B3 /* BigImageViewController.swift in Sources */,
 				F9CB29952629856E00144B28 /* ViewController.swift in Sources */,
+				F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */,
+				F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */,
 				F9CB29912629856E00144B28 /* AppDelegate.swift in Sources */,
+				F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */,
+				F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */,
+				F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */,
 				F9CB29932629856E00144B28 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,12 +495,15 @@
 		};
 		F9CB29A22629857100144B28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantInsta/PlantInsta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GZ94AWJKRA;
 				INFOPLIST_FILE = PlantInsta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,12 +517,15 @@
 		};
 		F9CB29A32629857100144B28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantInsta/PlantInsta.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GZ94AWJKRA;
 				INFOPLIST_FILE = PlantInsta/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

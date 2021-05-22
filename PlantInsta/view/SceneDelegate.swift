@@ -6,13 +6,43 @@
 //
 
 import UIKit
-
+import Firebase
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        let currentUser = Auth.auth().currentUser
+        
+        if currentUser != nil {
+            let board = UIStoryboard (name: "Main", bundle: nil)
+            let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
+            
+           /*
+            let vc1 = UIViewController()
+            vc1.view.backgroundColor = UIColor.orange
+            vc1.tabBarItem.title = "Orange"
+            vc1.tabBarItem.image = UIImage(named: "heart")
+            
+            // Set up the second View Controller
+            let vc2 = UIViewController()
+            vc2.view.backgroundColor = UIColor.purple
+            vc2.tabBarItem.title = "Red"
+            vc2.tabBarItem.image = UIImage(named: "star")
+            
+            // Set up the Tab Bar Controller to have two tabs
+           
+            tabBar.viewControllers = [vc1, vc2]
+            */
+            
+            window?.rootViewController = tabBar // İlk açılacak ekran tabBar olsun
+            
+            
+        }
+       
+        
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
