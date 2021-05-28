@@ -37,6 +37,7 @@ class SelectImageViewController: UIViewController {
     var progress : Int64 = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Select image daki \(postCountValue)")
         
         // *** klavye nedeniyle yazımı engelleyen durumu ortadan kaldırma ***
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -139,7 +140,7 @@ override func viewWillDisappear(_ animated: Bool) {
                                     plantAvatar: downloadUrl!, // resim adresi
                                     plantFirstDate: currentDate,
                                     plantName: self.diaryNameText.text!,
-                                    plantPostCount: 1 ,
+                                    plantPostCount: "1" ,
                                 plantUserMail: (Auth.auth().currentUser?.email)!)
                                 
                                 let db = Firestore.firestore()
@@ -155,13 +156,19 @@ override func viewWillDisappear(_ animated: Bool) {
                                     
                                     do {
                                         // feed olarak eklemek
-                                        try
+                                    try
                                             db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).collection("history")
                                             .addDocument(data: ["comment" : commentText.text!,
-                                                "date" : currentDate,
+                                                                "date" : FieldValue.serverTimestamp(),
                                                 "image" : downloadUrl! ])
-                                        let postcounter = ["plantPostCount" : (Int(postCountValue!)! + 1) ] as [String : Any]
-                                        db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData(postcounter, merge: true)
+                                       
+                                        let postcounter =  String((Int(postCountValue!)! + 1))
+                                       db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData([
+                                        "plantPostCount": postcounter,
+                                        
+                                    ]
+                                        
+                        , merge: true)
                                        
                                         
                                         /*
@@ -187,7 +194,7 @@ override func viewWillDisappear(_ animated: Bool) {
                                                     // Plant detail
                                                     addPlantDetail(usermail: newPlant.plantUserMail,
                                                                    plantName: diaryNameText.text!,
-                                                                   date: currentDate,
+                                                                   date: now,
                                                                    imageUrl: downloadUrl!)
                                                     
                                                     
@@ -240,7 +247,7 @@ override func viewWillDisappear(_ animated: Bool) {
         }
         }
        
-        func addPlantDetail(usermail : String, plantName: String,date: String , imageUrl: String) {
+        func addPlantDetail(usermail : String, plantName: String,date: Date , imageUrl: String) {
             
             let db = Firestore.firestore()
             let newFeed = FeedPlant (comment: commentText.text!, date: date, image: imageUrl)

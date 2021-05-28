@@ -56,7 +56,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
              let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
             destinationVC1.choosenPlant = self.chosenPlant
                      // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
-            destinationVC1.postCounterValue = self.postCounterValue
+            destinationVC1.postCounterValue = postCounterValue
         
            
                     
@@ -70,7 +70,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let formatter = DateFormatter()
-        formatter.dateFormat = "DD/MM/YYYY, HH:mm E"
+        formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantCell
        cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
@@ -105,9 +105,9 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                             let plantAvatar = document.get("plantAvatar") as! String
                             let plantFirstDate = document.get("plantFirstDate") as! String
                             let plantName = document.get("plantName") as! String
-                            let plantPostCount = document.get("plantPostCount") as! Int
+                            let plantPostCount = document.get("plantPostCount") as? String
                             let plantUserMail = document.get("plantUserMail") as! String
-                            let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount, plantUserMail: plantUserMail)
+                        let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount ?? "0", plantUserMail: plantUserMail)
                         
                         self.plantlist.append(plantDiary)
                         

@@ -10,6 +10,6 @@ import Foundation
 struct FeedPlant : Encodable{
     
     var comment : String
-    var date : String
+    var date : Date
     var image : String
 }

@@ -23,16 +23,35 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         return feedArray.count
     }
     
+    let now = Date()  // bugünün tarihin alıyor
+    let formatter = DateFormatter()  // format belirleyici
+    /*
+     dateStyle= .full > Sunday, April 25, 2021 at 1:14:20 PM"
+     .long > "April 25, 2021 at 1:15:11 PM"
+     .medium > "Apr 25, 2021 at 1:15:54 PM"
+     .short > 4/25/21, 1:16:22 PM
+     isteğe bağlı format için
+     ////formatter.dateFormat="dd/MM/yyyy HH:mm"
+     */
+    
  
     @IBOutlet var FeedView: UIView!
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
+        
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
+        formatter.locale = Locale.current
+
+        //let currentDate = formatter.string(from: now)
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCell", for: indexPath) as! FeedCell
-        dateFormatter.dateFormat = "dd/MM/YYYY hh:mm"
-        plantDate = String(feedArray[indexPath.row].date)
-        cell.dateText.text = feedArray[indexPath.row].date
+        
+        plantDate = formatter.string(from: feedArray[indexPath.row].date)
+        cell.dateText.text = formatter.string(from: feedArray[indexPath.row].date)
         cell.commentText.text = feedArray[indexPath.row].comment
         //cell.feedImage.image = UIImage(named: "deneme.png")
         //let transformer = SDImageResizingTransformer(size: CGSize(width: 414, height: 244), scaleMode: .aspectFill)
@@ -42,8 +61,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
          6 . tableviewnew için yaratılan celldelegate ları çağırıp
          değer vermen lazım.
         */
-        
-        
+        //6
         
         cell.cellDelegate = self   // hucre kendisine eşit olsun
         cell.index = indexPath  // index değeri indexpath olsun.
@@ -110,7 +128,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         
         let backButton = UIBarButtonItem()
-        backButton.title = "My Diaries"
+        backButton.title = "My Plants"
        // let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
       
@@ -170,10 +188,10 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     if snapshot?.isEmpty == false && snapshot != nil {
                         for document in snapshot!.documents
                         {let comments = document.get("comment") as! String
-                            let date = document.get("date") as! String
+                            let date = document.get("date")  as! Timestamp
                             let image = document.get("image") as! String
-                         
-                            let feed = FeedPlant(comment: comments, date: date, image: image)
+                            print("Serverdaki tarihi : \(date)")
+                            let feed = FeedPlant(comment: comments, date: Date() , image: image)
                             
                             self.feedArray
                                 .append(feed)

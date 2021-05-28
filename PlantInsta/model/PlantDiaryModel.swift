@@ -13,7 +13,7 @@ struct PlantDiary  : Codable {
     var plantAvatar : String
     var plantFirstDate : String
     var plantName : String
-    var plantPostCount : Int
+    var plantPostCount : String
     var plantUserMail : String
     
     enum CodingKeys: String, CodingKey {
