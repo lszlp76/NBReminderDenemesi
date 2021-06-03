@@ -39,6 +39,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         chosenPlant = plantlist[indexPath.row].plantName
         print("Plant listteki sayaç degeri \(plantlist[indexPath.row].plantPostCount)")
+        postCounterValue = (plantlist[indexPath.row].plantPostCount)
                 self.performSegue(withIdentifier: "toFeedList", sender: nil)
 
     }

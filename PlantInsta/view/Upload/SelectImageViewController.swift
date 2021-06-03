@@ -247,10 +247,10 @@ override func viewWillDisappear(_ animated: Bool) {
         }
         }
        
-        func addPlantDetail(usermail : String, plantName: String,date: Date , imageUrl: String) {
+    func addPlantDetail(usermail : String, plantName: String,date: Date , imageUrl: String) {
             
             let db = Firestore.firestore()
-            let newFeed = FeedPlant (comment: commentText.text!, date: date, image: imageUrl)
+        let newFeed = FeedPlant (comment: commentText.text!, date: date, image: imageUrl)
             do {
                 try db.collection(usermail).document(plantName).collection("history")
                     

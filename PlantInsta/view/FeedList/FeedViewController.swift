@@ -12,9 +12,17 @@ import SDWebImage
 class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var plantDate : String?
-    var downloadedImage : UIImage?
+    var downloadedImage = [UIImage]()
     var postCounterValue: String?
-   
+    var idArray = [ String ]()
+    var choosenPlant : String = ""
+    let firestoreDatabase = Firestore.firestore()
+    var plantinstaUser = Auth.auth().currentUser?.email!
+    
+    var feedArray = [FeedPlant]()
+    
+    var chosenFeed: String = ""
+    let dateFormatter = DateFormatter() // timestampi string yapmak için
    
    
     
@@ -66,37 +74,15 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         cell.cellDelegate = self   // hucre kendisine eşit olsun
         cell.index = indexPath  // index değeri indexpath olsun.
         
-        downloadedImage = cell.feedImage.image
+        // bu indirilecek resim
+        //downloadedImage.append((cell.feedImage.image ?? UIImage (named: "logo.png"))!)
         
         
        return cell
     
     }
     
-    
-    
-    
-    
-    /*
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let currentImage = downloadedImage
-        let croppedImage = (currentImage?.getCrop())!
-        return tableView.frame.width * croppedImage
-    }
-  */
-     
    
-        
-    
-    var choosenPlant : String = ""
-    let firestoreDatabase = Firestore.firestore()
-    var plantinstaUser = Auth.auth().currentUser?.email!
-    
-    var feedArray = [FeedPlant]()
-    var chosenFeed: String = ""
-    let dateFormatter = DateFormatter() // timestampi string yapmak için
-
-
   
     func makeAlert(title: String, message : String) {
         let alert = UIAlertController(title:title ,message: message, preferredStyle: UIAlertController.Style.alert)
@@ -110,7 +96,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FeedView.translatesAutoresizingMaskIntoConstraints = false
+        //FeedView.translatesAutoresizingMaskIntoConstraints = false
         print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*
         let image = FeedCell()
@@ -171,10 +157,67 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         }
     }
     
-    
+    func saveToDirectory(){
+        
+     
+        
+    }
    
-    
-    
+    func deleteFeedPlant(id : String,index : Int){
+     
+        if Int(self.postCounterValue!) != 0 {
+            firestoreDatabase.collection(plantinstaUser!).document(choosenPlant)
+                .collection("history")
+                .document(id)
+                .delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Document successfully removed!")
+                    // post sayısının güncellenmesi
+                    // Set the "capital" field of the city 'DC'
+                    let newPostCounter =  self.firestoreDatabase.collection(self.plantinstaUser!).document(self.choosenPlant)
+                    newPostCounter.updateData([
+                        "plantPostCount": String((Int(self.postCounterValue!)! - 1))
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                    
+                }
+            }
+            self.feedArray.remove(at: index)
+            self.idArray.remove(at: index)
+            self.feedList.reloadData()
+           
+        }
+        else {
+            self.makeAlert(title: "Delete", message: "You have 0 post to delete")
+        }
+        
+ 
+    }
+    func shareFeed(){
+        
+        let image = UIImage(named: "Image")
+                
+                // set up activity view controller
+                let imageToShare = [ image! ]
+                let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+                activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+                
+                // exclude some activity types from the list (optional)
+                activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+                
+                // present the view controller
+                self.present(activityViewController, animated: true, completion: nil)
+        
+        
+        
+    }
     func getFeedPlant(){
         firestoreDatabase.collection(plantinstaUser!)
             .document(choosenPlant)
@@ -190,11 +233,13 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                         {let comments = document.get("comment") as! String
                             let date = document.get("date")  as! Timestamp
                             let image = document.get("image") as! String
-                            print("Serverdaki tarihi : \(date)")
-                            let feed = FeedPlant(comment: comments, date: Date() , image: image)
                             
+                            let id = document.documentID
+                            let feed = FeedPlant(comment: comments, date: Date() , image: image)
+                            print("Serverdaki id : \(id)")
                             self.feedArray
                                 .append(feed)
+                            self.idArray.append(id)
                             
                             
                         }
@@ -213,7 +258,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         self.performSegue(withIdentifier: "toBigImage", sender: nil)
     }
     
-    
+   
    
 }
 
@@ -225,18 +270,133 @@ extension UIImage {
 }
 
 
+func getDocumentsDirectory() -> NSString {
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    let documentsDirectory = paths[0]
+    return documentsDirectory as NSString
+}
+
+extension Data {
+
+    /// Data into file
+    ///
+    /// - Parameters:
+    ///   - fileName: the Name of the file you want to write
+    /// - Returns: Returns the URL where the new file is located in NSURL
+    func dataToFile(fileName: String) -> NSURL? {
+
+        // Make a constant from the data
+        let data = self
+
+        // Make the file path (with the filename) where the file will be loacated after it is created
+        let filePath = getDocumentsDirectory().appendingPathComponent(fileName)
+
+        do {
+            // Write the file from data into the filepath (if there will be an error, the code jumps to the catch block below)
+            try data.write(to: URL(fileURLWithPath: filePath))
+
+            // Returns the URL where the new file is located in NSURL
+            return NSURL(fileURLWithPath: filePath)
+
+        } catch {
+            // Prints the localized description of the error from the do block
+            print("Error writing the file: \(error.localizedDescription)")
+        }
+
+        // Returns nil if there was an error in the do-catch -block
+        return nil
+
+    }
+
+}
+
+
 //5'in devamı ( tableview içindeki eleman tıklanma )
 //5 yaratılan yeni özelliği bu viewcontroller a  ekle
 extension FeedViewController: TableViewNew {
     func onClickedShare(index: Int) {
         print(" Share \(index) shared!")
+        
+        //https://stackoverflow.com/questions/35851118/how-do-i-share-files-using-share-sheet-in-ios
+        if let url = URL(string: feedArray[index].image),
+                let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) {
+            // Convert the image into png image data
+            let pngImageData = image.pngData()
+
+            // Write the png image into a filepath and return the filepath in NSURL
+            let pngImageURL = pngImageData?.dataToFile(fileName: "SharedByPlantInsta.png")
+
+            // Create the Array which includes the files you want to share
+            var filesToShare = [Any]()
+
+            // Add the path of png image to the Array
+            filesToShare.append(pngImageURL!)
+
+            // Make the activityViewContoller which shows the share-view
+            
+            let activityViewController = UIActivityViewController(activityItems: filesToShare, applicationActivities: nil)
+                   activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+                   
+                   // exclude some activity types from the list (optional)
+            activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ,UIActivity.ActivityType.mail,UIActivity.ActivityType.postToTwitter]
+                   
+                   // present the view controller
+                   self.present(activityViewController, animated: true, completion: nil)
+            
+            
+           // let activityViewController = UIActivityViewController(activityItems: filesToShare, applicationActivities: [])
+
+            // Show the share-view
+            //self.present(activityViewController, animated: true, completion: nil)
+            
+            }
+        
+       
+        
     }
     
     func onClickedDownload(index: Int) {
-        print(" Download\(index) downloaded!")
+       
+       
+        /**
+         NSPhotoLibraryAddUsageDescription izini eklemelisin. Yoksa photosa yazamazsın
+         nasıl eklenir.
+         infoplist ten ekelersin
+         sağ tıklayıp, open as source code diyip
+         <key>NSPhotoLibraryAddUsageDescription</key>
+         <string>Our application needs permission to write photos...</string>
+         bu kodu yapıştır
+         
+         */
+        
+        // bu kod, resimi url ye onu da dataya çeviriyor
+        // let imagestring = String(parsingdata ( xxxxx ) ) bununla veriyi/resimi stringe çeviriyor
+        if let url = URL(string: feedArray[index].image),
+                let data = try? Data(contentsOf: url),
+                let image = UIImage(data: data) {
+                
+            
+            // photos a yazmak için bu kod yeterli.
+            //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+            
+            let album = CustomPhotoAlbum("PlantInsta")
+            album.save(image)
+           
+            
+            }
+        
+        
+        makeAlert(title: "Download", message: "Download completed!\nCheck your PlantInsta Album")
+        
+       
     }
     
     func onClickedTrash(index: Int) {
-        print(" Trash \(index) deleted!")
+        print(" Trash \(idArray[index])deleted!")
+        deleteFeedPlant(id: idArray[index],index: index) // veritabanından silme
+        
+       
+        
     }
 }
