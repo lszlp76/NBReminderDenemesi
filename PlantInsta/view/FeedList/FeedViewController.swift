@@ -49,8 +49,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         
         
-        formatter.dateStyle = .short
-        formatter.timeStyle = .medium
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         formatter.locale = Locale.current
 
         //let currentDate = formatter.string(from: now)
@@ -95,7 +95,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        feedList.rowHeight = UITableView.automaticDimension
+        feedList.estimatedRowHeight = 600
         //FeedView.translatesAutoresizingMaskIntoConstraints = false
         print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*

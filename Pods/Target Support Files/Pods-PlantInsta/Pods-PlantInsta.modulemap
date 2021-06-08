@@ -1,0 +1,6 @@
+framework module Pods_PlantInsta {
+  umbrella header "Pods-PlantInsta-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C9905112C0A37804AB9B3949 /* Pods_PlantInsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; };
 		F90D4A32263817FF00E9615E /* Servie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4A31263817FF00E9615E /* Servie.swift */; };
 		F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9215A09262EB87E00DE7CE4 /* WebViewController.swift */; };
 		F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */; };
 		F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94302D4263347CD0057399F /* TabBarViewController.swift */; };
+		F961FEBC2669F240002F16F0 /* kullanilanlinkler in Resources */ = {isa = PBXBuildFile; fileRef = F961FEBB2669F240002F16F0 /* kullanilanlinkler */; };
 		F96C7F1B262D6915002F263A /* PlantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F1A262D6915002F263A /* PlantListViewController.swift */; };
 		F96C7F1E262D6930002F263A /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F1D262D6930002F263A /* UploadViewController.swift */; };
 		F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F23262D6EA6002F263A /* MenuListViewController.swift */; };
 		F9768ADF2669162C00EE7B94 /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768ADE2669162C00EE7B94 /* CustomAlbum.swift */; };
+		F9768AE2266919BF00EE7B94 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE1266919BF00EE7B94 /* OnboardingViewController.swift */; };
+		F9768AE326691D1400EE7B94 /* Pods_PlantInsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; };
+		F9768AE426691D1400EE7B94 /* Pods_PlantInsta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F9768AE72669203800EE7B94 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE62669203800EE7B94 /* OnboardingView.swift */; };
 		F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */; };
 		F9CB29912629856E00144B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29902629856E00144B28 /* AppDelegate.swift */; };
 		F9CB29932629856E00144B28 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29922629856E00144B28 /* SceneDelegate.swift */; };
@@ -32,6 +36,20 @@
 		F9D36361262E2691002460B3 /* BigImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36360262E2691002460B3 /* BigImageViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		F9768AE526691D1400EE7B94 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F9768AE426691D1400EE7B94 /* Pods_PlantInsta.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantInsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.debug.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.debug.xcconfig"; sourceTree = "<group>"; };
@@ -40,10 +58,13 @@
 		F9215A0D262EC85600DE7CE4 /* PlantInsta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantInsta.entitlements; sourceTree = "<group>"; };
 		F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
 		F94302D4263347CD0057399F /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "../New Group/TabBarViewController.swift"; sourceTree = "<group>"; };
+		F961FEBB2669F240002F16F0 /* kullanilanlinkler */ = {isa = PBXFileReference; lastKnownFileType = text; path = kullanilanlinkler; sourceTree = "<group>"; };
 		F96C7F1A262D6915002F263A /* PlantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantListViewController.swift; sourceTree = "<group>"; };
 		F96C7F1D262D6930002F263A /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		F96C7F23262D6EA6002F263A /* MenuListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewController.swift; sourceTree = "<group>"; };
 		F9768ADE2669162C00EE7B94 /* CustomAlbum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlbum.swift; sourceTree = "<group>"; };
+		F9768AE1266919BF00EE7B94 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		F9768AE62669203800EE7B94 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesirableSpec.swift; sourceTree = "<group>"; };
 		F9CB298D2629856E00144B28 /* PlantInsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantInsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CB29902629856E00144B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9905112C0A37804AB9B3949 /* Pods_PlantInsta.framework in Frameworks */,
+				F9768AE326691D1400EE7B94 /* Pods_PlantInsta.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +134,7 @@
 		F96C7F11262D62C0002F263A /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F9768AE02669199B00EE7B94 /* Onboarding */,
 				F9CB29962629856E00144B28 /* Main.storyboard */,
 				F9B6682F26516EB8005EE437 /* SignIn */,
 				F9232BE72631615F00AAD5B0 /* Upload */,
@@ -123,6 +145,15 @@
 				F9CB29922629856E00144B28 /* SceneDelegate.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		F9768AE02669199B00EE7B94 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				F9768AE1266919BF00EE7B94 /* OnboardingViewController.swift */,
+				F9768AE62669203800EE7B94 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		F9B6682F26516EB8005EE437 /* SignIn */ = {
@@ -163,6 +194,7 @@
 				F9CB29A5262985D000144B28 /* GoogleService-Info.plist */,
 				F9CB299B2629857100144B28 /* LaunchScreen.storyboard */,
 				F9CB299E2629857100144B28 /* Info.plist */,
+				F961FEBB2669F240002F16F0 /* kullanilanlinkler */,
 			);
 			path = PlantInsta;
 			sourceTree = "<group>";
@@ -218,6 +250,7 @@
 				F9CB298B2629856E00144B28 /* Resources */,
 				3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */,
 				A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */,
+				F9768AE526691D1400EE7B94 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +302,7 @@
 				F9CB29A6262985D000144B28 /* GoogleService-Info.plist in Resources */,
 				F9CB299A2629857100144B28 /* Assets.xcassets in Resources */,
 				F9CB29982629856E00144B28 /* Main.storyboard in Resources */,
+				F961FEBC2669F240002F16F0 /* kullanilanlinkler in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +376,7 @@
 				F9D3632F262DB1F3002460B3 /* PlantDiaryModel.swift in Sources */,
 				F9D36353262E112C002460B3 /* FeedViewController.swift in Sources */,
 				F9D36357262E1384002460B3 /* FeedPlantModel.swift in Sources */,
+				F9768AE2266919BF00EE7B94 /* OnboardingViewController.swift in Sources */,
 				F9D3635E262E1595002460B3 /* FeedCell.swift in Sources */,
 				F90D4A32263817FF00E9615E /* Servie.swift in Sources */,
 				F96C7F1B262D6915002F263A /* PlantListViewController.swift in Sources */,
@@ -350,6 +385,7 @@
 				F9CB29952629856E00144B28 /* ViewController.swift in Sources */,
 				F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */,
 				F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */,
+				F9768AE72669203800EE7B94 /* OnboardingView.swift in Sources */,
 				F9CB29912629856E00144B28 /* AppDelegate.swift in Sources */,
 				F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */,
 				F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */,
