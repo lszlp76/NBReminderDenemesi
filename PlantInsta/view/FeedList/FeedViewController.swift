@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
+@available(iOS 13.0, *)
 class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
     var plantDate : String?
@@ -314,6 +315,7 @@ extension Data {
 
 //5'in devamı ( tableview içindeki eleman tıklanma )
 //5 yaratılan yeni özelliği bu viewcontroller a  ekle
+@available(iOS 13.0, *)
 extension FeedViewController: TableViewNew {
     func onClickedShare(index: Int) {
         print(" Share \(index) shared!")

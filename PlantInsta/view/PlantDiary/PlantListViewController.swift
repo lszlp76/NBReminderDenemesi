@@ -9,6 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
+@available(iOS 13.0, *)
 class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var tableView: UITableView!

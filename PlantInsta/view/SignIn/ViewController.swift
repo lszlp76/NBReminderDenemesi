@@ -9,7 +9,6 @@ import UIKit
 import Firebase
 import FirebaseUI
 import AuthenticationServices
-@available(iOS 13.0, *)
 class ViewController: UIViewController, FUIAuthDelegate {
 
     
@@ -23,7 +22,6 @@ class ViewController: UIViewController, FUIAuthDelegate {
      
     @IBOutlet var signUpButton: UIButton!
     
-    @available(iOS 13.0, *)
     func setUpSignInAppleButton() {
       let authorizationButton = ASAuthorizationAppleIDButton()
        
@@ -68,13 +66,9 @@ class ViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var emailtext: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-   
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
-        UserDefaults.standard.removeObject(forKey: "firstUsage")
       
         setUpSignInAppleButton()
         //assignbackground()
@@ -149,23 +143,6 @@ class ViewController: UIViewController, FUIAuthDelegate {
                 if ( error != nil ){
                     self.makeAlert(title: "Sign In Error", message: error?.localizedDescription ?? "Error")
                 }else{
-                    
-                    let firstusage = UserDefaults.standard
-                    if firstusage.integer(forKey: "firstUsage") == 1 {
-                        print("onboarding dont start")
-                       
-                        
-                    }
-                    else {
-                        firstusage.set(1,forKey: "firstUsage")
-                     
-                        firstusage.synchronize()
-                        // onboarding pages.
-                        print("onboarding starts")
-                        self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
-                    }
-                    
-                    
                     self.performSegue(withIdentifier: "toPlantList", sender: nil)
                 }
             }

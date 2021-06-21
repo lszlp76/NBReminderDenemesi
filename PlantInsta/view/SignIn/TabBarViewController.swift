@@ -21,15 +21,11 @@ class TabBarViewController: UITabBarController {
         // Do any additional setup after loading the view.
         */
         let appearance = UITabBarItem.appearance()
-        let attributes = [NSAttributedString.Key.font:UIFont(name: "Arial", size: 14)]
+        let attributes = [NSAttributedString.Key.font:UIFont(name: "American Typewriter", size: 20)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
-        appearance.badgeTextAttributes(for: .selected)
-        /*
-         
         let vc1 = UIViewController()
         vc1.view.backgroundColor = UIColor.orange
         vc1.tabBarItem.title = "Orange"
-         */
       //  tabBar.barTintColor = UIColor.blue
         
         

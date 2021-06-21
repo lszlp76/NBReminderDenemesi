@@ -10,7 +10,8 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import Firebase
 
-class SelectImageViewController: UIViewController {
+@available(iOS 13.0, *)
+class SelectImageViewController: UIViewController ,UITextViewDelegate {
      
     var selectImage: UIImage!
     var entryFromFeed : String!
@@ -35,10 +36,24 @@ class SelectImageViewController: UIViewController {
     }()
     
     var progress : Int64 = 0
+    
+  // placeholder eklemek için UItextview delegate ekle ve aşağıdakileri yaz
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if commentText.textColor == UIColor.lightGray {
+            commentText.text = nil
+            commentText.textColor = UIColor.black
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Select image daki \(postCountValue)")
         
+        commentText.delegate = self
+        
+       // print("Select image daki \(postCountValue)")
+        commentText.text = "Add your comments here..."
+        commentText.font = UIFont.italicSystemFont(ofSize: 14)
+        commentText.textColor = UIColor.lightGray
         // *** klavye nedeniyle yazımı engelleyen durumu ortadan kaldırma ***
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -59,7 +74,7 @@ class SelectImageViewController: UIViewController {
        
         //
         selectedImageView.image = selectImage
-        selectedImageView.contentMode = .scaleToFill
+        //selectedImageView.contentMode = .scaleToFil
         
         // Do any additional setup after loading the view.
     }
