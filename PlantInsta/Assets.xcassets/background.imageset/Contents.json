@@ -1,10 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "s.png",
-      "idiom" : "universal"
-    },
-    {
+      "filename" : "field.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

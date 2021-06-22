@@ -17,40 +17,44 @@ class OnboardingViewController: UIViewController , PaperOnboardingDataSource, Pa
     }
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
-        let bgcolor1 = UIColor( red:217/255, green: 72/255, blue :89/255,alpha: 1)
-        let bgcolor2 = UIColor( red: 200/255, green: 89/255, blue : 92/255,alpha: 1)
+        let bgcolor2 = UIColor( red:248/255, green: 187/255, blue :208/255,alpha: 1)
+        let bgcolor1 = UIColor( red: 200/255, green: 89/255, blue : 92/255,alpha: 1)
         
         let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
         let descFont = UIFont(name: "AvenirNext-Regular",size: 18)!
-        let rocket  = UIImage(named: "logo") as UIImage?
-        let rocket3 = UIImage(named: "logomor-1") as UIImage?
-        let rocket2 = UIImage(systemName: "circle" ) as UIImage?
+        let rocket  = UIImage(named: "pageone") as UIImage?
+        let rocket3 = UIImage(named: "pagethree") as UIImage?
+        let rocket2 = UIImage(named: "pagetwo" ) as UIImage?
+        let icon = UIImage( named: "logo") as UIImage?
+        let fontColor1 = UIColor (red: 206/255, green: 147/255, blue: 216/255, alpha: 1)
+        let fontColor2 = UIColor (red: 171/255, green: 71/255, blue: 188/255, alpha: 1)
+        
         return [
             OnboardingItemInfo(informationImage: rocket!,
-                                     title: "title",
-                                     description: "description",
-                                     pageIcon: rocket!,
+                                     title: "Keep a diary for your plant",
+                                     description: "Observe the growth of your seedlings in your garden, the flowers on your balcony, and the plants in your field, photograph them and take some notes.",
+                                     pageIcon: icon!,
                                      color: bgcolor2,
-                                     titleColor: UIColor.white,
-                                     descriptionColor: UIColor.white,
+                                     titleColor: fontColor2,
+                                     descriptionColor: fontColor2,
                                      titleFont: UIFont(name: "AvenirNext-Bold", size: 24)!,
                                      descriptionFont: UIFont(name: "AvenirNext-Regular", size: 18)!),
             OnboardingItemInfo(informationImage: rocket2!,
-                                     title: "sayfa2",
-                                     description: "description 2",
-                                     pageIcon: rocket2!,
+                                     title: "Keep it up to date",
+                                     description: "Add pages to your diaries. Follow the growth of your plants with your diaries.",
+                                     pageIcon: icon!,
                                      color: bgcolor2,
-                                     titleColor: UIColor.white,
-                                     descriptionColor: UIColor.white,
+                                     titleColor: fontColor2,
+                                     descriptionColor: fontColor2,
                                      titleFont: UIFont(name: "AvenirNext-Bold", size: 24)!,
                                      descriptionFont: UIFont(name: "AvenirNext-Regular", size: 18)!),
             OnboardingItemInfo(informationImage: rocket3!,
-                                     title: "sayfa3",
-                                     description: "description 3",
-                                     pageIcon: rocket3!,
+                                     title: "Share it !",
+                                     description: "Share your pages with your friends.",
+                                     pageIcon: icon!,
                                      color: bgcolor2,
-                                     titleColor: UIColor.white,
-                                     descriptionColor: UIColor.white,
+                                     titleColor: fontColor2,
+                                     descriptionColor: fontColor2,
                                      titleFont: UIFont(name: "AvenirNext-Bold", size: 24)!,
                                      descriptionFont: UIFont(name: "AvenirNext-Regular", size: 18)!)
                 
