@@ -25,6 +25,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     
     @IBOutlet weak var sendImage: UIButton!
+   
     @IBOutlet var commentText: UITextView!
     
     /* progress view hazırlık */
@@ -48,9 +49,9 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     override func viewDidLoad() {
         super.viewDidLoad()
         diaryNameText.delegate = self
-        commentText.delegate = self
+       
         diaryNameText.tag = 0
-        commentText.tag = 1
+      
         
        // print("Select image daki \(postCountValue)")
         commentText.text = "Add your comments here..."
@@ -83,7 +84,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             
-           commentText.resignFirstResponder()
+           //commentText.resignFirstResponder()
             return false
         }
         return true
@@ -92,7 +93,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == diaryNameText {
-            self.view.viewWithTag(1)?.select(nil)
+         //   self.view.viewWithTag(1)?.select(nil)
            
         }
        return true

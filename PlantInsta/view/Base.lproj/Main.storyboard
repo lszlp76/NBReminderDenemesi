@@ -233,34 +233,53 @@
                     <view key="view" contentMode="scaleToFill" id="ntD-7z-evI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <userGuides>
+                            <userLayoutGuide location="30" affinity="minX"/>
+                            <userLayoutGuide location="386" affinity="minX"/>
+                        </userGuides>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="SeT-9V-b0o">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="VWm-h8-uWu">
                                 <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4K-n5-6wW">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="474"/>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="avA-Rg-SXU">
-                                        <rect key="frame" x="0.0" y="474" width="414" height="165"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oHt-eq-6p3">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="358.5"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your diary's name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gA-NI-jP1">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="34.5"/>
-                                                <color key="backgroundColor" red="1" green="0.9098039269" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add your comments..." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Jhy-RD-fJV">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="120.5"/>
-                                                <color key="backgroundColor" red="1" green="0.9098039269" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v4K-n5-6wW">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="Vf5-Kr-f7i"/>
+                                                </constraints>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8YR-3P-M7z">
+                                                <rect key="frame" x="0.0" y="200" width="414" height="158.5"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your diary's name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gA-NI-jP1">
+                                                        <rect key="frame" x="8" y="8" width="398" height="70"/>
+                                                        <color key="backgroundColor" red="1" green="0.9098039269" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add your comments..." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Jhy-RD-fJV">
+                                                        <rect key="frame" x="8" y="83" width="398" height="67.5"/>
+                                                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="67.5" id="4h0-iH-7eW"/>
+                                                        </constraints>
+                                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PTV-As-H4v">
-                                        <rect key="frame" x="0.0" y="639" width="414" height="34"/>
+                                        <rect key="frame" x="0.0" y="376.5" width="414" height="33.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="33.5" id="Rrw-8s-Ezi"/>
+                                        </constraints>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="Send Me">
@@ -274,16 +293,23 @@
                                             <action selector="sendImageClicked:" destination="4SU-Nd-yro" eventType="touchUpInside" id="drj-7D-bRB"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GKn-FB-m7V">
+                                        <rect key="frame" x="0.0" y="428" width="414" height="245"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="GKn-FB-m7V" firstAttribute="top" secondItem="VWm-h8-uWu" secondAttribute="top" constant="428" id="x0V-OY-SIP"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gb5-dx-ZDA"/>
                         <color key="backgroundColor" red="0.99215686319999996" green="0.91372549530000002" blue="0.94117647410000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="SeT-9V-b0o" firstAttribute="top" secondItem="gb5-dx-ZDA" secondAttribute="top" id="008-SO-YIc"/>
-                            <constraint firstItem="gb5-dx-ZDA" firstAttribute="bottom" secondItem="SeT-9V-b0o" secondAttribute="bottom" id="6me-P1-fOF"/>
-                            <constraint firstItem="SeT-9V-b0o" firstAttribute="leading" secondItem="gb5-dx-ZDA" secondAttribute="leading" id="Mte-nm-2WU"/>
-                            <constraint firstItem="gb5-dx-ZDA" firstAttribute="trailing" secondItem="SeT-9V-b0o" secondAttribute="trailing" id="yQn-wS-BzR"/>
+                            <constraint firstItem="VWm-h8-uWu" firstAttribute="leading" secondItem="gb5-dx-ZDA" secondAttribute="leading" id="7W5-6w-nAH"/>
+                            <constraint firstItem="VWm-h8-uWu" firstAttribute="top" secondItem="gb5-dx-ZDA" secondAttribute="top" id="BXX-fB-uJr"/>
+                            <constraint firstItem="VWm-h8-uWu" firstAttribute="bottom" secondItem="gb5-dx-ZDA" secondAttribute="bottom" id="LVu-qL-75M"/>
+                            <constraint firstItem="VWm-h8-uWu" firstAttribute="trailing" secondItem="gb5-dx-ZDA" secondAttribute="trailing" id="bo5-cU-NmH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mQ2-cp-pcF"/>
@@ -855,6 +881,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
