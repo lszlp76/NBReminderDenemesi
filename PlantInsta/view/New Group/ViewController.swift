@@ -10,7 +10,7 @@ import Firebase
 import FirebaseUI
 import AuthenticationServices
 @available(iOS 13.0, *)
-class ViewController: UIViewController, FUIAuthDelegate {
+class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
 
     
     
@@ -36,8 +36,8 @@ class ViewController: UIViewController, FUIAuthDelegate {
             
           //  authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: 100),
             authorizationButton.bottomAnchor.constraint(equalTo: continueButton.bottomAnchor,constant: 38),
-            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 11),
-        authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -11)
+            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 25),
+        authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -25)
             
         ])
      /**
@@ -69,11 +69,32 @@ class ViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var continueButton: UIButton!
    
+    /* background resmi yapmak için*/
+    let backgroundImage = UIImage( named: "background")
+    var backgroundImageView : UIImageView!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        /* background bir imageview içinde atıp arka plan yapıyor*/
+        backgroundImageView = UIImageView ( frame: view.bounds)
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.clipsToBounds = true
+        backgroundImageView.image = backgroundImage
+        backgroundImageView.center = view.center
+        view.addSubview(backgroundImageView)
+        self.view.sendSubviewToBack(backgroundImageView)
+        
+        /*geç e basınca sonraki alana geçme*/
+        emailtext.delegate = self
+        passwordText.delegate = self
+        emailtext.tag = 0
+        passwordText.tag = 1
         
         
+        
+       
+        /* ilk kullanım*/
         UserDefaults.standard.removeObject(forKey: "firstUsage")
       
         setUpSignInAppleButton()
@@ -86,6 +107,21 @@ class ViewController: UIViewController, FUIAuthDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
        
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Try to find next responder
+              if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
+                 nextField.becomeFirstResponder()
+              } else {
+                 // Not found, so remove keyboard.
+                 textField.resignFirstResponder()
+              }
+              // Do not add a line break
+              return false
+         
+       }
+    
+    
     func assignbackground(){
            let background = UIImage(named: "background")
 

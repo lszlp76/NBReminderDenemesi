@@ -10,7 +10,8 @@ import Firebase
 import SDWebImage
 
 @available(iOS 13.0, *)
-class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
+                               UIGestureRecognizerDelegate{
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,6 +21,8 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     var plantlist = [PlantDiary]() //plantdiary objelerinden oluşan bir dizi olacak
     var chosenPlant = ""
     var postCounterValue: String?
+    var plantToDelete :String? // silinecek olan plant array adı
+    var indexToDelete : Int? // silinicek olan plant array indexi
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -31,10 +34,31 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         getPlantData()
         
-        
+        //Long Press
+           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+           longPressGesture.minimumPressDuration = 0.8 // saniye olarak süre
+           self.tableView.addGestureRecognizer(longPressGesture)
        
         
         // Do any additional setup after loading the view.
+    }
+    
+    
+    // LONGCLİCK için UIGestureRecognizerDelegate ekle
+    
+    @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
+        
+        let p = longPressGesture.location(in: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: p)
+        if indexPath == nil {
+            print("Long press on table view, not row.")
+        } else if longPressGesture.state == UIGestureRecognizer.State.began {
+            print("Long press on row, at \(indexPath!.row)")
+            print("\(plantlist[indexPath!.row].plantName)")
+            plantToDelete = plantlist[indexPath!.row].plantName
+            indexToDelete = indexPath?.row
+            makeDeleteAlert(title: "Plant deleting", message: "\(plantToDelete!) diary will delete...")
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -78,7 +102,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
        cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
         cell.PlantCreatedDate.text = plantlist[indexPath.row].plantFirstDate
        cell.PlantDiaryName.text = plantlist[indexPath.row].plantName
-        cell.PostCountLabel.text = String(plantlist[indexPath.row].plantPostCount)
+        cell.PostCountLabel.text = "You have \(String(plantlist[indexPath.row].plantPostCount)) posts"
         self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
         return cell
     }
@@ -123,6 +147,43 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
 
+    func makeDeleteAlert(title: String, message : String) {
+        let alert = UIAlertController(title:title ,message: message, preferredStyle: UIAlertController.Style.alert)
+        let okbutton = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { action in
+            //print ("OK pressed")
+            self.deletePlant(planttodelete: self.plantToDelete!, index: self.indexToDelete! )
+            
+        } )
+        let nokbutton = UIAlertAction(title:"No",style: UIAlertAction.Style.default,handler: { action in
+            //print ("NOK pressed")
+        })
+        alert.addAction(okbutton)
+        alert.addAction(nokbutton)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    func deletePlant(planttodelete: String,index : Int){
+     
+        
+            firestoreDatabase.collection(plantinstaUser!)
+                .document(planttodelete)
+                .delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Deleted!")
+                   
+                    
+                }
+            }
+            self.plantlist.remove(at: index)
+            
+            self.tableView.reloadData()
+           
+       
+        }
+        
+ 
     
     
 

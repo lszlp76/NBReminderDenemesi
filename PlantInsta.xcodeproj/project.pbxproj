@@ -18,7 +18,6 @@
 		F9768ADF2669162C00EE7B94 /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768ADE2669162C00EE7B94 /* CustomAlbum.swift */; };
 		F9768AE2266919BF00EE7B94 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE1266919BF00EE7B94 /* OnboardingViewController.swift */; };
 		F9768AE326691D1400EE7B94 /* Pods_PlantInsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; };
-		F9768AE426691D1400EE7B94 /* Pods_PlantInsta.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9768AE72669203800EE7B94 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE62669203800EE7B94 /* OnboardingView.swift */; };
 		F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */; };
 		F9CB29912629856E00144B28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CB29902629856E00144B28 /* AppDelegate.swift */; };
@@ -35,20 +34,6 @@
 		F9D3635E262E1595002460B3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D3635D262E1595002460B3 /* FeedCell.swift */; };
 		F9D36361262E2691002460B3 /* BigImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D36360262E2691002460B3 /* BigImageViewController.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		F9768AE526691D1400EE7B94 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				F9768AE426691D1400EE7B94 /* Pods_PlantInsta.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantInsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,7 +235,6 @@
 				F9CB298B2629856E00144B28 /* Resources */,
 				3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */,
 				A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */,
-				F9768AE526691D1400EE7B94 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

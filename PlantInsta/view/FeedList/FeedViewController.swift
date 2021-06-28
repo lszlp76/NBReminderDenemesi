@@ -116,11 +116,13 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         
         let backButton = UIBarButtonItem()
+        
         backButton.title = "My Plants"
        // let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
+    
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
       
-        let rightButton = UIBarButtonItem(title: "Add New", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(addButton))
+        let rightButton = UIBarButtonItem(title: "Add New Plant", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(addButton))
         navigationItem.rightBarButtonItem = rightButton
         
         //self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton

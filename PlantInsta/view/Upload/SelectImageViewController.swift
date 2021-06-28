@@ -11,7 +11,7 @@ import FirebaseFirestoreSwift
 import Firebase
 
 @available(iOS 13.0, *)
-class SelectImageViewController: UIViewController ,UITextViewDelegate {
+class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFieldDelegate {
      
     var selectImage: UIImage!
     var entryFromFeed : String!
@@ -47,8 +47,10 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        diaryNameText.delegate = self
         commentText.delegate = self
+        diaryNameText.tag = 0
+        commentText.tag = 1
         
        // print("Select image daki \(postCountValue)")
         commentText.text = "Add your comments here..."
@@ -78,11 +80,26 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate {
         
         // Do any additional setup after loading the view.
     }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            
+           commentText.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == diaryNameText {
+            self.view.viewWithTag(1)?.select(nil)
+           
+        }
+       return true
+      }
     // klavye görülünce field leri yukarı al
     
-   
-
+    
 override func viewWillDisappear(_ animated: Bool) {
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: self.view.window)
     NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: self.view.window)

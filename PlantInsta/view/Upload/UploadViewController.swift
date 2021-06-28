@@ -23,15 +23,18 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     @IBOutlet weak var cameraContainerView: UIView!
     
     override func viewDidAppear(_ animated: Bool) {
-        //addImagePickerToContainerView()
+        addImagePickerToContainerView()
     }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        title = "New Plant"
        
       // camera preview yapmak için
         
-        //addImagePickerToContainerView()
+       addImagePickerToContainerView()
         
        
        
@@ -62,7 +65,8 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
 
             }
         }
-    /*
+    
+    // CAMERA PREVİEW AÇMA
     @IBAction func catchit(_ sender: Any) {
         
        
@@ -72,7 +76,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
             
         }
         }
-    */
+    
     /*
   
     Galeri AÇMA****************************
@@ -109,13 +113,13 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
         }
         
         
-        /*camera var ise
+      //CAMERA
         
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alert.addAction(UIAlertAction.init(title: "Camera", style: .default, handler: { (_) in
                 self.presentImagePicker(controller: self.imagePickerController!, source: .camera)
             }))
-        }*/
+        }
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             alert.addAction(UIAlertAction.init(title: "Photo Library", style: .default, handler: { (_) in
