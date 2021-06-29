@@ -10,8 +10,15 @@ import Firebase
 import SDWebImage
 
 @available(iOS 13.0, *)
-class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
-                               UIGestureRecognizerDelegate{
+class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UISearchBarDelegate, UISearchResultsUpdating{
+    
+    
+    
+    
+  
+   
+    
+    
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,17 +26,75 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     var plantinstaUser = Auth.auth().currentUser?.email!
 
     var plantlist = [PlantDiary]() //plantdiary objelerinden oluşan bir dizi olacak
+    
+    var filteredPlants = [PlantDiary]()  // arama için oluşacak dizi
     var chosenPlant = ""
     var postCounterValue: String?
     var plantToDelete :String? // silinecek olan plant array adı
     var indexToDelete : Int? // silinicek olan plant array indexi
+    
+    /*** search METODU */
+    let searchPlant = UISearchController()
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+       // let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let searchText = searchBar.text!
+         
+        filterForSearchTextAndScopeButton(searchText: searchText)
+       
+    }
+    
+    
+    
+    // https://www.youtube.com/watch?v=DAHG0orOxKo
+    func filterForSearchTextAndScopeButton ( searchText: String ){
+       
+        filteredPlants = plantlist.filter
+        
+        {
+            plant in
+            
+            if ( searchPlant.searchBar.text != "")
+            {
+                let searchTextMatch = plant.plantName.lowercased().contains(searchText.lowercased())
+                return searchTextMatch
+            }
+            
+          else
+            {
+                
+                return true
+            }
+            
+        }
+        self.tableView.reloadData()
+    }
+    
+    func initSearchController(){
+        searchPlant.loadViewIfNeeded()
+        searchPlant.searchResultsUpdater = self
+        searchPlant.obscuresBackgroundDuringPresentation = false
+        searchPlant.searchBar.enablesReturnKeyAutomatically = false
+        searchPlant.searchBar.returnKeyType = UIReturnKeyType.done
+        //searchPlant.searchBar.tintColor = UIColor.white
+        definesPresentationContext = true
+        
+        navigationItem.searchController = searchPlant
+        navigationItem.hidesSearchBarWhenScrolling = false
+        //searchPlant.searchBar.scopeButtonTitles = [""]
+        searchPlant.searchBar.delegate = self
+        
+    }
+     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         title = "My Plants"
         tableView.delegate = self
         tableView.dataSource = self
-     
+        initSearchController()
         
         
         getPlantData()
@@ -62,10 +127,19 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        chosenPlant = plantlist[indexPath.row].plantName
-        print("Plant listteki sayaç degeri \(plantlist[indexPath.row].plantPostCount)")
-        postCounterValue = (plantlist[indexPath.row].plantPostCount)
-                self.performSegue(withIdentifier: "toFeedList", sender: nil)
+        if (searchPlant.isActive){
+            chosenPlant = filteredPlants[indexPath.row].plantName
+            postCounterValue = (filteredPlants[indexPath.row].plantPostCount)
+                    self.performSegue(withIdentifier: "toFeedList", sender: nil)
+        }
+        else{
+            chosenPlant = plantlist[indexPath.row].plantName
+            postCounterValue = (plantlist[indexPath.row].plantPostCount)
+                    self.performSegue(withIdentifier: "toFeedList", sender: nil)
+        }
+       
+        
+       
 
     }
     
@@ -78,18 +152,29 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
              targetController.choosenPlant = chosenPlant
              
              */
-    
-             let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
-            destinationVC1.choosenPlant = self.chosenPlant
-                     // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
-            destinationVC1.postCounterValue = postCounterValue
-        
+            if (searchPlant.isActive){
+                let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
+                destinationVC1.choosenPlant = chosenPlant
+                       
+               destinationVC1.postCounterValue = postCounterValue
+            }else {
+                let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
+               destinationVC1.choosenPlant = self.chosenPlant
+                        // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
+               destinationVC1.postCounterValue = postCounterValue
+           
+            }
+             
            
                     
                 }
 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if (searchPlant.isActive){
+            return filteredPlants.count
+        }
         return plantlist.count
         
     }
@@ -99,11 +184,24 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantCell
-       cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
-        cell.PlantCreatedDate.text = plantlist[indexPath.row].plantFirstDate
-       cell.PlantDiaryName.text = plantlist[indexPath.row].plantName
-        cell.PostCountLabel.text = "You have \(String(plantlist[indexPath.row].plantPostCount)) posts"
-        self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
+       
+        
+        
+        if (searchPlant.isActive)
+        {
+            cell.PlantAvatarImage.sd_setImage(with: URL (string: filteredPlants[indexPath.row].plantAvatar))
+             cell.PlantCreatedDate.text = filteredPlants[indexPath.row].plantFirstDate
+            cell.PlantDiaryName.text = filteredPlants[indexPath.row].plantName
+             cell.PostCountLabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) posts"
+             self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
+        }
+        else{
+            cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
+             cell.PlantCreatedDate.text = plantlist[indexPath.row].plantFirstDate
+            cell.PlantDiaryName.text = plantlist[indexPath.row].plantName
+             cell.PostCountLabel.text = "You have \(String(plantlist[indexPath.row].plantPostCount)) posts"
+             self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
+        }
         return cell
     }
     
@@ -136,6 +234,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                         let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount ?? "0", plantUserMail: plantUserMail)
                         
                         self.plantlist.append(plantDiary)
+                        
                         
                         
                     }
