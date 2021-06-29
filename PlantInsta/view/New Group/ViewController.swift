@@ -11,7 +11,7 @@ import FirebaseUI
 import AuthenticationServices
 import GoogleSignIn
 @available(iOS 13.0, *)
-class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
+class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDSignInDelegate{
    
     /*
     class func instantiate() -> ViewController {
@@ -32,7 +32,10 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
             self.performSegue(withIdentifier: "toPlantList", sender: nil)
         }
     }
-  
+    
+    
+    
+    
     @IBOutlet var signUpButton: UIButton!
     
     @available(iOS 13.0, *)
@@ -82,8 +85,13 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var continueButton: UIButton!
    
-    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var signInButton: UIButton!
     
+    @IBAction func signGoogle(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signIn()
+       
+    }
+   
     
     /* background resmi yapmak için*/
     let backgroundImage = UIImage( named: "background")
@@ -91,15 +99,57 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
     
    
     
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+       
+        if let error = error {
+        print(error.localizedDescription)
+        return
+        }
+        guard let auth = user.authentication else { return }
+        let credentials = GoogleAuthProvider.credential(withIDToken: auth.idToken, accessToken: auth.accessToken)
+        Auth.auth().signIn(with: credentials) { (authResult, error) in
+        if let error = error {
+        print(error.localizedDescription)
+        } else {
+        print("Login Successful.")
+            
+            
+            let firstusage = UserDefaults.standard
+            if firstusage.integer(forKey: "firstUsage") == 1 {
+                print("onboarding doesnt start")
+                self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                
+            }
+            else {
+                firstusage.set(1,forKey: "firstUsage")
+             
+                firstusage.synchronize()
+                // onboarding pages.
+                print("onboarding starts")
+                self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+            }
+            
+            
+            
+        }
+            
+            
+         
+        //This is where you should add the functionality of successful login
+        //i.e. dismissing this view or push the home view controller etc
+    }
+    }
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         //GoogleSignIn
        
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance().signIn()
-       
+        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().signIn()
         
         /* background bir imageview içinde atıp arka plan yapıyor*/
         backgroundImageView = UIImageView ( frame: view.bounds)

@@ -11,8 +11,50 @@ import GoogleSignIn
 
 @available(iOS 13.0, *)
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
+    
+    /*func sign(_ signIn: GIDSignIn!,
+                  didSignInFor user: GIDGoogleUser!,
+                  withError error: Error!) {
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                               accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential, completion: { (user, error) -> Void in
+                           if error != nil {
+                               print("Problem at signing in with google with error : \(error)")
+                           } else if error == nil {
+                               print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.uid)")
+                               print("signed in")
+                               
+                               let firstusage = UserDefaults.standard
+                               if firstusage.integer(forKey: "firstUsage") == 1 {
+                                   print("onboarding dont start")
+                                   let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
+                                   
+                                   self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
+                               }
+                               else {
+                                   firstusage.set(1,forKey: "firstUsage")
+                                
+                                   firstusage.synchronize()
+                                   // onboarding pages.
+                                   print("onboarding starts")
+                                   let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
+                                   
+                                   self.window?.rootViewController?.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                               }
+                               
+                               
+                           }
+                       })
+            }
 
+            // Post notification after user successfully sign in
+            NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
+        }
+    
+*/
 
     var window: UIWindow?
    
@@ -23,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate {
      
          //google sign in için gereken satılar
          GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-         GIDSignIn.sharedInstance().delegate = self
+         //GIDSignIn.sharedInstance().delegate = self
          
       
 
@@ -58,50 +100,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate {
     }
     
    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-      // ...
-      if let error = error {
-        // ...
-        return
-      }
-
-      guard let authentication = user.authentication else { return }
-      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                        accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential, completion: { (user, error) -> Void in
-                    if error != nil {
-                        print("Problem at signing in with google with error : \(error)")
-                    } else if error == nil {
-                        print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.uid)")
-                        print("signed in")
-                        
-                        let firstusage = UserDefaults.standard
-                        if firstusage.integer(forKey: "firstUsage") == 1 {
-                            print("onboarding dont start")
-                            let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
-                            
-                            self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
-                        }
-                        else {
-                            firstusage.set(1,forKey: "firstUsage")
-                         
-                            firstusage.synchronize()
-                            // onboarding pages.
-                            print("onboarding starts")
-                            let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
-                            
-                            self.window?.rootViewController?.performSegue(withIdentifier: "toOnboardingView", sender: nil)
-                        }
-                        
-                        
-                    }
-                })
-    }
-  
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
-    }
- 
+   
 }
+
+
+  
+   
+ 
+
 

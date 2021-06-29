@@ -57,15 +57,19 @@ class MenuListViewController: UIViewController , UITableViewDelegate,UITableView
             self.performSegue(withIdentifier: "toWebView", sender: nil)
         }else
         {
+            
+           
+            
             do {
                 try
                 Auth.auth().signOut()
-                
+               
                 self.performSegue(withIdentifier: "toViewController", sender: nil)
-                }catch
-                {
-                    print ("Error")
-                }
+                
+                }catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                  }
+            
         }
         
         
