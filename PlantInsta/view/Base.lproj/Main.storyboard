@@ -11,10 +11,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--signInPage-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" title="signInPage" id="BYZ-38-t0r" customClass="ViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,20 +81,45 @@
                                             <action selector="signInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hAh-a2-nEH"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOG-Dn-7ME" customClass="GIDSignInButton">
+                                        <rect key="frame" x="16" y="384" width="382" height="50"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXs-NU-MgH" customClass="FBSDKLoginButton">
+                                        <rect key="frame" x="16" y="442" width="382" height="29"/>
+                                        <color key="backgroundColor" red="0.95294117649999999" green="0.45098039220000002" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="jiU-bL-OII"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="8" left="80" bottom="8" right="80"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Google Sign In">
+                                            <color key="titleShadowColor" name="AccentColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="signInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LnT-uP-tEy"/>
+                                        </connections>
+                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pfz-Oj-n5H">
-                                        <rect key="frame" x="16" y="384" width="382" height="326"/>
+                                        <rect key="frame" x="16" y="479" width="382" height="231"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="SignUp" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tlp-TK-Vnl" userLabel="SignUpStack">
-                                                <rect key="frame" x="67.5" y="0.0" width="247" height="326"/>
+                                                <rect key="frame" x="67.5" y="0.0" width="247" height="231"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account ?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zr1-eG-54x">
-                                                        <rect key="frame" x="0.0" y="305.5" width="183" height="20.5"/>
+                                                        <rect key="frame" x="0.0" y="210.5" width="183" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="bottom" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXt-7G-x7d">
-                                                        <rect key="frame" x="187" y="293" width="60" height="33"/>
+                                                        <rect key="frame" x="187" y="198" width="60" height="33"/>
                                                         <color key="backgroundColor" red="0.99215686274509807" green="0.9137254901960784" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="tintColor" systemColor="systemBlueColor"/>
@@ -135,6 +160,7 @@
                         <outlet property="continueButton" destination="ttc-Tj-gnd" id="fsF-qF-Cn4"/>
                         <outlet property="emailtext" destination="2Aa-sw-cbC" id="bSd-p6-cAH"/>
                         <outlet property="passwordText" destination="pEM-XN-5dj" id="c8t-qd-kJi"/>
+                        <outlet property="signInButton" destination="CXs-NU-MgH" id="iDB-WA-iAw"/>
                         <outlet property="signUpButton" destination="yXt-7G-x7d" id="b7G-2o-NXN"/>
                         <segue destination="xQ3-3k-Zsx" kind="presentation" identifier="toPlantList" modalPresentationStyle="fullScreen" id="LSZ-is-4RU"/>
                         <segue destination="N9M-ar-Y2A" kind="presentation" identifier="toOnboardingView" modalPresentationStyle="fullScreen" id="W9p-yJ-Vmh"/>
@@ -855,7 +881,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="K3q-B2-fAY"/>
+        <segue reference="LSZ-is-4RU"/>
         <segue reference="kgr-VW-BeY"/>
     </inferredMetricsTieBreakers>
     <resources>

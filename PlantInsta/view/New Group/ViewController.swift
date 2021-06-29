@@ -9,8 +9,20 @@ import UIKit
 import Firebase
 import FirebaseUI
 import AuthenticationServices
+import GoogleSignIn
 @available(iOS 13.0, *)
 class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
+   
+    /*
+    class func instantiate() -> ViewController {
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let viewController = storyboard.instantiateViewController(withIdentifier: "\(ViewController.self)") as! ViewController
+
+           return viewController
+       }
+
+   */
+    
 
     
     
@@ -20,10 +32,11 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
             self.performSegue(withIdentifier: "toPlantList", sender: nil)
         }
     }
-     
+  
     @IBOutlet var signUpButton: UIButton!
     
     @available(iOS 13.0, *)
+    
     func setUpSignInAppleButton() {
       let authorizationButton = ASAuthorizationAppleIDButton()
        
@@ -35,7 +48,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
         NSLayoutConstraint.activate([
             
           //  authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: 100),
-            authorizationButton.bottomAnchor.constraint(equalTo: continueButton.bottomAnchor,constant: 38),
+            authorizationButton.bottomAnchor.constraint(equalTo: signInButton.bottomAnchor,constant: 38),
             authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 25),
         authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -25)
             
@@ -69,13 +82,25 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var continueButton: UIButton!
    
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    
+    
     /* background resmi yapmak için*/
     let backgroundImage = UIImage( named: "background")
     var backgroundImageView : UIImageView!
     
+   
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //GoogleSignIn
+       
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().signIn()
+       
+        
         /* background bir imageview içinde atıp arka plan yapıyor*/
         backgroundImageView = UIImageView ( frame: view.bounds)
         backgroundImageView.contentMode = .scaleAspectFill
@@ -107,7 +132,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
        
     }
-    
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Try to find next responder
               if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {

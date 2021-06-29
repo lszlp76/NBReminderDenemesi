@@ -7,10 +7,11 @@
 
 import UIKit
 import Firebase
+import GoogleSignIn
 
 @available(iOS 13.0, *)
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate ,GIDSignInDelegate {
 
 
     var window: UIWindow?
@@ -19,7 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Override point for customization after application launch.
         FirebaseApp.configure()
-       
+     
+         //google sign in için gereken satılar
+         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+         GIDSignIn.sharedInstance().delegate = self
+         
+      
+
+//        window?.rootViewController = ViewController.instantiate()
         
         
         
@@ -44,7 +52,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    //Google signin için
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url)
+    }
+    
+   
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+      // ...
+      if let error = error {
+        // ...
+        return
+      }
 
-
+      guard let authentication = user.authentication else { return }
+      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                        accessToken: authentication.accessToken)
+        Auth.auth().signIn(with: credential, completion: { (user, error) -> Void in
+                    if error != nil {
+                        print("Problem at signing in with google with error : \(error)")
+                    } else if error == nil {
+                        print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.uid)")
+                        print("signed in")
+                        
+                        let firstusage = UserDefaults.standard
+                        if firstusage.integer(forKey: "firstUsage") == 1 {
+                            print("onboarding dont start")
+                            let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
+                            
+                            self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
+                        }
+                        else {
+                            firstusage.set(1,forKey: "firstUsage")
+                         
+                            firstusage.synchronize()
+                            // onboarding pages.
+                            print("onboarding starts")
+                            let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
+                            
+                            self.window?.rootViewController?.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                        }
+                        
+                        
+                    }
+                })
+    }
+  
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
+    }
+ 
 }
 
