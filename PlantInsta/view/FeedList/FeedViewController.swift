@@ -122,7 +122,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
       
-        let rightButton = UIBarButtonItem(title: "Add New Plant", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(addButton))
+        let rightButton = UIBarButtonItem(title: "Add New Plant", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
         navigationItem.rightBarButtonItem = rightButton
         
         //self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
@@ -235,7 +235,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     if snapshot?.isEmpty == false && snapshot != nil {
                         for document in snapshot!.documents
                         {let comments = document.get("comment") as! String
-                            let date = document.get("date")  as! Timestamp
+                           // let date = document.get("date")  as! Timestamp
                             let image = document.get("image") as! String
                             
                             let id = document.documentID

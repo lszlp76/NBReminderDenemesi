@@ -38,7 +38,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
         
        
        
-        let rightButton = UIBarButtonItem(title: "My Pictures", style: UIBarButtonItem.Style.bordered, target: self, action: #selector(pickImage))
+        let rightButton = UIBarButtonItem(title: "My Pictures", style: UIBarButtonItem.Style.plain, target: self, action: #selector(pickImage))
         navigationItem.rightBarButtonItem = rightButton
         
     }

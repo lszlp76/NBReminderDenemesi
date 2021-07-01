@@ -18,15 +18,15 @@ class OnboardingViewController: UIViewController , PaperOnboardingDataSource, Pa
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         let bgcolor2 = UIColor( red:248/255, green: 187/255, blue :208/255,alpha: 1)
-        let bgcolor1 = UIColor( red: 200/255, green: 89/255, blue : 92/255,alpha: 1)
+       // let bgcolor1 = UIColor( red: 200/255, green: 89/255, blue : 92/255,alpha: 1)
         
-        let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
-        let descFont = UIFont(name: "AvenirNext-Regular",size: 18)!
+       // let titleFont = UIFont(name: "AvenirNext-Bold", size: 24)!
+       // let descFont = UIFont(name: "AvenirNext-Regular",size: 18)!
         let rocket  = UIImage(named: "pageone") as UIImage?
         let rocket3 = UIImage(named: "pagethree") as UIImage?
         let rocket2 = UIImage(named: "pagetwo" ) as UIImage?
         let icon = UIImage( named: "logo") as UIImage?
-        let fontColor1 = UIColor (red: 206/255, green: 147/255, blue: 216/255, alpha: 1)
+        //let fontColor1 = UIColor (red: 206/255, green: 147/255, blue: 216/255, alpha: 1)
         let fontColor2 = UIColor (red: 171/255, green: 71/255, blue: 188/255, alpha: 1)
         
         return [

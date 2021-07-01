@@ -129,13 +129,13 @@ override func viewWillDisappear(_ animated: Bool) {
         
        
         if uploadTask == nil {
-            let data = Data()
+           // let data = Data()
             let storage = Storage.storage()
             let storageReference = storage.reference()
             let images = storageReference.child("images")
             
             let uuid = UUID().uuidString
-            print(selectedImageView.image?.size)
+            print(selectedImageView.image?.size as Any)
             if let data = selectedImageView.image?.jpegData(compressionQuality: 0.5)
             {
             let imageReference = images.child( "\(uuid).jpg")

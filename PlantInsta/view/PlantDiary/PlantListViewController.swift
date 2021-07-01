@@ -201,26 +201,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.present(alert, animated: true, completion: nil)
     }
-    func deletePlant(planttodelete: String,index : Int){
-     
-        
-            firestoreDatabase.collection(plantinstaUser!)
-                .document(planttodelete)
-                .delete() { err in
-                if let err = err {
-                    print("Error removing document: \(err)")
-                } else {
-                    print("Deleted!")
-                   
-                    
-                }
-            }
-            self.plantlist.remove(at: index)
-            
-            self.tableView.reloadData()
-           
-       
-        }
+    
         
  /****SEARCH BAR *******/
     
@@ -240,8 +221,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
        
         filteredPlants = plantlist.filter
         
-        {
-            plant in
+        { plant in
             
             if ( searchPlant.searchBar.text != "")
             {
@@ -284,15 +264,51 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let p = longPressGesture.location(in: self.tableView)
         let indexPath = self.tableView.indexPathForRow(at: p)
-        print("index path \(indexPath) row at \(p)")
+        print("index path \(String(describing: indexPath)) row at \(p)")
         if indexPath == nil {
             print("Long press on table view, not row.")
         } else if longPressGesture.state == UIGestureRecognizer.State.began {
             print("Long press on row, at \(indexPath!.row)")
-            print("\(plantlist[indexPath!.row].plantName)")
-            plantToDelete = plantlist[indexPath!.row].plantName
-            indexToDelete = indexPath?.row
+            
+            if (searchPlant.isActive){
+                plantToDelete = filteredPlants[indexPath!.row].plantName
+                
+               //filtre edilen isimi ,plantlist içinde olduğu index numarasını buluyor
+                let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[indexPath!.row].plantName)
+                                                             })
+                    do { try! indexToDelete = filteredIndex
+                        
+                }
+                    
+            }else {
+                plantToDelete = plantlist[indexPath!.row].plantName
+                indexToDelete = indexPath?.row
+                print("\(plantlist[indexPath!.row].plantName)")
+            }
+           
             makeDeleteAlert(title: "Plant deleting", message: "\(plantToDelete!) diary will delete...")
         }
     }
+    func deletePlant(planttodelete: String,index : Int){
+     
+        
+            firestoreDatabase.collection(plantinstaUser!)
+                .document(planttodelete)
+                .delete() { err in
+                if let err = err {
+                    print("Error removing document: \(err)")
+                } else {
+                    print("Deleted!")
+                   
+                    
+                }
+            }
+            self.plantlist.remove(at: index)
+        
+            searchPlant.searchBar.text = "" // search bar 'ı boş karakter tanımlayıp tüm listeyi göstermek için
+            
+            self.tableView.reloadData()
+           
+       
+        }
 }
