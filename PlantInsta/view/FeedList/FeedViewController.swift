@@ -96,8 +96,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        feedList.rowHeight = UITableView.automaticDimension
-        feedList.estimatedRowHeight = 600
+       feedList.rowHeight = UITableView.automaticDimension
+      //feedList.estimatedRowHeight = 600
         //FeedView.translatesAutoresizingMaskIntoConstraints = false
         print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*

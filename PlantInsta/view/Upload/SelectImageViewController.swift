@@ -16,7 +16,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     var selectImage: UIImage!
     var entryFromFeed : String!
     var postCountValue : String?
-    
+    var rightNavButton : UIBarButtonItem!
     // entryFromFeed nil ise plant , 1 ise feed demek olacak
    
    
@@ -31,7 +31,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     /* progress view hazırlık */
     private let progressView : UIProgressView = {
         let progressView = UIProgressView (progressViewStyle: .bar)
-        progressView.trackTintColor = .gray
+        progressView.trackTintColor = .lightGray
             progressView.progressTintColor = .green
         return progressView
     }()
@@ -48,8 +48,15 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        progressView.isHidden = true
+        rightNavButton = UIBarButtonItem(title: "Send me", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
+        navigationItem.rightBarButtonItem = rightNavButton
+       rightNavButton.isEnabled = false
+        
+        
         diaryNameText.delegate = self
-       
+        commentText.delegate = self
         diaryNameText.tag = 0
       
         
@@ -68,7 +75,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         NSLayoutConstraint.activate([
         
         
-        progressView.bottomAnchor.constraint(equalTo: sendImage.bottomAnchor,constant: 4)
+        progressView.bottomAnchor.constraint(equalTo: commentText.bottomAnchor,constant: 4)
         ])
         // progress değeri yüklemeye göre değer alıyor .
        
@@ -84,16 +91,35 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             
-           //commentText.resignFirstResponder()
+           commentText.resignFirstResponder()
             return false
         }
         return true
     }
     
     
+    //comment text içine tıklandığında textview i temizler
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        commentText.text = ""
+        
+        return true
+    }
+    //comment text işi bittiğinde sendme butonunu aktif eder.
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+       
+        if commentText.text != "" {
+            print("commenttext dou")
+            rightNavButton.isEnabled = true
+        }else {
+            rightNavButton.isEnabled = false
+        }
+        
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == diaryNameText {
-         //   self.view.viewWithTag(1)?.select(nil)
+         self.view.viewWithTag(1)?.select(nil)
            
         }
        return true
@@ -125,159 +151,170 @@ override func viewWillDisappear(_ animated: Bool) {
     var sendingPermission = false
     var uploadTask : StorageUploadTask?
    
-    func sendPlant(){
+    @objc func sendPlant(){
         
-       
-        if uploadTask == nil {
-           // let data = Data()
-            let storage = Storage.storage()
-            let storageReference = storage.reference()
-            let images = storageReference.child("images")
-            
-            let uuid = UUID().uuidString
-            print(selectedImageView.image?.size as Any)
-            if let data = selectedImageView.image?.jpegData(compressionQuality: 0.5)
-            {
-            let imageReference = images.child( "\(uuid).jpg")
+        if diaryNameText!.text != "" && commentText!.text != ""{
+        
+            if uploadTask == nil {
+               // let data = Data()
+                rightNavButton.isEnabled = false
+                progressView.isHidden = false
+                let storage = Storage.storage()
+                let storageReference = storage.reference()
+                let images = storageReference.child("images")
                 
-                uploadTask =
-                imageReference.putData(data, metadata: nil)
-                { (storage, error) in
-                    if ( error != nil){
-                        print(error?.localizedDescription)
-                    }else {
-                         imageReference.downloadURL { [self] (url, error) in
-                            if error != nil {
-                                print(error?.localizedDescription as Any)
-                                
-                            } else {
-                                let storagesize = storage?.size
-                                let downloadUrl = url?.absoluteString
-                                let now = Date()  // bugünün tarihin alıyor
-                                let formatter = DateFormatter()  // format belirleyici
-                                /*
-                                 dateStyle= .full > Sunday, April 25, 2021 at 1:14:20 PM"
-                                 .long > "April 25, 2021 at 1:15:11 PM"
-                                 .medium > "Apr 25, 2021 at 1:15:54 PM"
-                                 .short > 4/25/21, 1:16:22 PM
-                                 isteğe bağlı format için
-                                 ////formatter.dateFormat="dd/MM/yyyy HH:mm"
-                                 */
-                                formatter.dateStyle = .short
-                                formatter.timeStyle = .medium
-                                formatter.locale = Locale.current
-                                let currentDate = formatter.string(from: now)
-                                // DATABASE İŞLEMLERİ Burada başlayacak
-                                /*New Plant*/
-                                let newPlant = PlantDiary (
-                                    plantAvatar: downloadUrl!, // resim adresi
-                                    plantFirstDate: currentDate,
-                                    plantName: self.diaryNameText.text!,
-                                    plantPostCount: "1" ,
-                                plantUserMail: (Auth.auth().currentUser?.email)!)
-                                
-                                let db = Firestore.firestore()
-                                
-                                /*
-                                 // Upload the file to the path "folderName/file.jpg"
-                                 let uploadTask = storageRef.putFile(localFile, metadata: nil)
+                let uuid = UUID().uuidString
+                print(selectedImageView.image?.size as Any)
+                if let data = selectedImageView.image?.jpegData(compressionQuality: 0.5)
+                {
+                let imageReference = images.child( "\(uuid).jpg")
+                    
+                    uploadTask =
+                    imageReference.putData(data, metadata: nil)
+                    { (storage, error) in
+                        if ( error != nil){
+                            print(error?.localizedDescription)
+                        }else {
+                             imageReference.downloadURL { [self] (url, error) in
+                                if error != nil {
+                                    print(error?.localizedDescription as Any)
+                                    
+                                } else {
+                                    let storagesize = storage?.size
+                                    let downloadUrl = url?.absoluteString
+                                    let now = Date()  // bugünün tarihin alıyor
+                                    let formatter = DateFormatter()  // format belirleyici
+                                    /*
+                                     dateStyle= .full > Sunday, April 25, 2021 at 1:14:20 PM"
+                                     .long > "April 25, 2021 at 1:15:11 PM"
+                                     .medium > "Apr 25, 2021 at 1:15:54 PM"
+                                     .short > 4/25/21, 1:16:22 PM
+                                     isteğe bağlı format için
+                                     ////formatter.dateFormat="dd/MM/yyyy HH:mm"
+                                     */
+                                    formatter.dateStyle = .short
+                                    formatter.timeStyle = .medium
+                                    formatter.locale = Locale.current
+                                    let currentDate = formatter.string(from: now)
+                                    // DATABASE İŞLEMLERİ Burada başlayacak
+                                    /*New Plant*/
+                                    let newPlant = PlantDiary (
+                                        plantAvatar: downloadUrl!, // resim adresi
+                                        plantFirstDate: currentDate,
+                                        plantName: self.diaryNameText.text!,
+                                        plantPostCount: "1" ,
+                                    plantUserMail: (Auth.auth().currentUser?.email)!)
+                                    
+                                    let db = Firestore.firestore()
+                                    
+                                    /*
+                                     // Upload the file to the path "folderName/file.jpg"
+                                     let uploadTask = storageRef.putFile(localFile, metadata: nil)
 
-                                 */
-                                
-                                
-                                if (self.entryFromFeed != nil ){
+                                     */
                                     
-                                    do {
-                                        // feed olarak eklemek
-                                    try
-                                            db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).collection("history")
-                                            .addDocument(data: ["comment" : commentText.text!,
-                                                                "date" : FieldValue.serverTimestamp(),
-                                                "image" : downloadUrl! ])
-                                       
-                                        let postcounter =  String((Int(postCountValue!)! + 1))
-                                       db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData([
-                                        "plantPostCount": postcounter,
-                                        
-                                    ]
-                                        
-                        , merge: true)
-                                       
-                                        
-                                        /*
-                                        let newPostCount = [ "plantPostCount" : ]
-                                        db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData(newPostCount, merge: true)
- */
-                                    }
-                                    catch let error
-                                    { print("Error writing city to Firestore: \(error)")
-                                        
-                                        
-                                    }
                                     
-                                }else {
-                                    do
-                                    // plant olarak eklemek
-                                    {
+                                    if (self.entryFromFeed != nil ){
+                                        
+                                        do {
+                                            // feed olarak eklemek
                                         try
-                                            db.collection((Auth.auth().currentUser?.email)!).document(diaryNameText.text!)
-                                            .setData(from: newPlant, merge: true, encoder: Firestore.Encoder(), completion: { (error) in
-                                                if error == nil {
-                                                   
-                                                    // Plant detail
-                                                    addPlantDetail(usermail: newPlant.plantUserMail,
-                                                                   plantName: diaryNameText.text!,
-                                                                   date: now,
-                                                                   imageUrl: downloadUrl!)
-                                                    
-                                                    
-                                                }
-                                            })
+                                                db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).collection("history")
+                                                .addDocument(data: ["comment" : commentText.text!,
+                                                                    "date" : FieldValue.serverTimestamp(),
+                                                    "image" : downloadUrl! ])
+                                           
+                                            let postcounter =  String((Int(postCountValue!)! + 1))
+                                           db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData([
+                                            "plantPostCount": postcounter,
+                                            
+                                        ]
+                                            
+                            , merge: true)
+                                           
+                                            
+                                            /*
+                                            let newPostCount = [ "plantPostCount" : ]
+                                            db.collection((Auth.auth().currentUser?.email)!).document(self.entryFromFeed).setData(newPostCount, merge: true)
+     */
+                                        }
+                                        catch let error
+                                        { print("Error writing city to Firestore: \(error)")
+                                            
+                                            
+                                        }
+                                        
+                                    }else {
+                                        do
+                                        // plant olarak eklemek
+                                        {
+                                            try
+                                                db.collection((Auth.auth().currentUser?.email)!).document(diaryNameText.text!)
+                                                .setData(from: newPlant, merge: true, encoder: Firestore.Encoder(), completion: { (error) in
+                                                    if error == nil {
+                                                       
+                                                        // Plant detail
+                                                        addPlantDetail(usermail: newPlant.plantUserMail,
+                                                                       plantName: diaryNameText.text!,
+                                                                       date: now,
+                                                                       imageUrl: downloadUrl!)
+                                                        
+                                                        
+                                                    }
+                                                })
 
+                                        }
+                                        
+                                        
+                                        
+                                        catch let error
+                                        { print("Error writing city to Firestore: \(error)")
+                                            
+                                            
+                                        }
                                     }
                                     
                                     
-                                    
-                                    catch let error
-                                    { print("Error writing city to Firestore: \(error)")
-                                        
-                                        
-                                    }
                                 }
-                                
-                                
                             }
+                            
                         }
+                    }
+                    
+                    let observer = uploadTask!.observe(.progress) { snapshot in
+                        let realbyte =  (snapshot.progress?.completedUnitCount)
+                        let totalbyte = (snapshot.progress?.totalUnitCount)
+                        self.progress = realbyte! * 100 / totalbyte!
+                        print("Loading ratio : % \(self.progress)")// NSProgress object
+                        
+                        self.progressView.progress = Float(self.progress)
                         
                     }
+                    uploadTask!.observe(.success) { (StorageTaskSnapshot) in
+                       
+                        print("Loaded")
+                        self.uploadTask?.removeAllObservers()
+                        self.performSegue(withIdentifier: "toTabBarView", sender: nil)
+                    }
+                   
                 }
                 
-                let observer = uploadTask!.observe(.progress) { snapshot in
-                    let realbyte =  (snapshot.progress?.completedUnitCount)
-                    let totalbyte = (snapshot.progress?.totalUnitCount)
-                    self.progress = realbyte! * 100 / totalbyte!
-                    print("Loading ratio : % \(self.progress)")// NSProgress object
-                    
-                    self.progressView.progress = Float(self.progress)
-                    
-                }
-                uploadTask!.observe(.success) { (StorageTaskSnapshot) in
+                
+            } else {
+                ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "Your uploading is ongoing...")
+                
+                
                    
-                    print("Loaded")
-                    self.uploadTask?.removeAllObservers()
-                    self.performSegue(withIdentifier: "toTabBarView", sender: nil)
-                }
-               
+           
             }
             
-            
-        } else {
-            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "Your uploading is ongoing...")
-            
-            
-               
-       
+        }else {
+            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "deneme mesajı")
         }
+        
+        
+        
+       
         }
        
     func addPlantDetail(usermail : String, plantName: String,date: Date , imageUrl: String) {
