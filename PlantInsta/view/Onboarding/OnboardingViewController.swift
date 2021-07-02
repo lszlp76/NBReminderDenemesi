@@ -88,6 +88,7 @@ class OnboardingViewController: UIViewController , PaperOnboardingDataSource, Pa
             })
         }
     }
+    
     func onboardingWillTransitonToIndex(_ index: Int) {
         if index == 1{
             if self.getStartedButton.alpha == 1 {

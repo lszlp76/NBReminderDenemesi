@@ -30,8 +30,9 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "New Plant"
-       
+        title = "New Diary"
+        
+        imagePickerController?.delegate = self
       // camera preview yapmak için
         
        addImagePickerToContainerView()
@@ -50,7 +51,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
         
         
         if UIImagePickerController.isCameraDeviceAvailable( UIImagePickerController.CameraDevice.front) {
-                imagePickerController?.delegate = self
+            imagePickerController?.delegate = self
             imagePickerController?.sourceType = UIImagePickerController.SourceType.camera
 
                 //add as a childviewcontroller
@@ -153,16 +154,14 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
             
         selectedImage = image
     
-     
-         picker.dismiss(animated: true) {
-                 picker.delegate = nil
-                 self.imagePickerController = nil
-             }
-        
-        
-        
-      
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
+         
+//        picker.dismiss(animated: true) {
+//                 picker.delegate = nil
+//                 self.imagePickerController = nil
+//             }
+      
+        
         }
    
         

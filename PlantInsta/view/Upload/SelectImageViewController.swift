@@ -156,7 +156,7 @@ override func viewWillDisappear(_ animated: Bool) {
         if diaryNameText!.text != "" && commentText!.text != ""{
         
             if uploadTask == nil {
-               // let data = Data()
+               let data = Data()
                 rightNavButton.isEnabled = false
                 progressView.isHidden = false
                 let storage = Storage.storage()

@@ -15,14 +15,14 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // LONGCLİCK için UIGestureRecognizerDelegate ekle
     
-  
+    
     
     
     @IBOutlet weak var tableView: UITableView!
     
     let firestoreDatabase = Firestore.firestore()
     var plantinstaUser = Auth.auth().currentUser?.email!
-
+    
     var plantlist = [PlantDiary]() //plantdiary objelerinden oluşan bir dizi olacak
     
     var filteredPlants = [PlantDiary]()  // arama için oluşacak dizi
@@ -48,9 +48,9 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         getPlantData()
         
         //Long Press
-           let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-           longPressGesture.minimumPressDuration = 0.8 // saniye olarak süre
-           self.tableView.addGestureRecognizer(longPressGesture)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressGesture.minimumPressDuration = 0.8 // saniye olarak süre
+        self.tableView.addGestureRecognizer(longPressGesture)
     }
     
     
@@ -62,14 +62,14 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         if (searchPlant.isActive){
             chosenPlant = filteredPlants[indexPath.row].plantName
             postCounterValue = (filteredPlants[indexPath.row].plantPostCount)
-                    self.performSegue(withIdentifier: "toFeedList", sender: nil)
+            self.performSegue(withIdentifier: "toFeedList", sender: nil)
         }
         else{
             chosenPlant = plantlist[indexPath.row].plantName
             postCounterValue = (plantlist[indexPath.row].plantPostCount)
-                    self.performSegue(withIdentifier: "toFeedList", sender: nil)
+            self.performSegue(withIdentifier: "toFeedList", sender: nil)
         }
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,20 +78,20 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             if (searchPlant.isActive){
                 let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
                 destinationVC1.choosenPlant = chosenPlant
-                       
-               destinationVC1.postCounterValue = postCounterValue
+                
+                destinationVC1.postCounterValue = postCounterValue
             }else {
                 let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
-               destinationVC1.choosenPlant = self.chosenPlant
-                        // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
-               destinationVC1.postCounterValue = postCounterValue
-           
+                destinationVC1.choosenPlant = self.chosenPlant
+                // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
+                destinationVC1.postCounterValue = postCounterValue
+                
             }
-             
-           
-                    
-                }
-
+            
+            
+            
+        }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -107,34 +107,43 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantCell
-       
         
+       
+        cell.contentView.backgroundColor = UIColor(red: 186, green : 186, blue : 186, alpha: 1)
+       // cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: )
+       
         
         if (searchPlant.isActive)
         {
             cell.PlantAvatarImage.sd_setImage(with: URL (string: filteredPlants[indexPath.row].plantAvatar))
-             cell.PlantCreatedDate.text = filteredPlants[indexPath.row].plantFirstDate
+            cell.PlantCreatedDate.text = filteredPlants[indexPath.row].plantFirstDate
             cell.PlantDiaryName.text = filteredPlants[indexPath.row].plantName
-             cell.PostCountLabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) posts"
-             self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
+            cell.PostCountLabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
+            self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
         }
         else{
             cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
-             cell.PlantCreatedDate.text = plantlist[indexPath.row].plantFirstDate
+            cell.PlantCreatedDate.text = plantlist[indexPath.row].plantFirstDate
             cell.PlantDiaryName.text = plantlist[indexPath.row].plantName
             
             if Int(self.plantlist[indexPath.row].plantPostCount)! > 1
             {
-                let word = "posts"
-                cell.PostCountLabel.text = "You have \(String(plantlist[indexPath.row].plantPostCount)) \(word)"
-            }else
+                let word = "pages"
+                cell.PostCountLabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
+            }
+            else if Int(self.plantlist[indexPath.row].plantPostCount)! == 1
             {
-                let word = "post"
-                cell.PostCountLabel.text = "You have \(String(plantlist[indexPath.row].plantPostCount)) \(word)"
+                let word = "page"
+                cell.PostCountLabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
+            } else  {
+                cell.PostCountLabel.text = "No page in this diary !"
+                
+                cell.contentView.backgroundColor = UIColor( red: 207/255, green: 216/255, blue : 220/255, alpha:1)
+                cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 14)
+                
             }
             
-             
-             self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
+            self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
         }
         return cell
     }
@@ -155,37 +164,37 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     func getPlantData() {
         
         firestoreDatabase.collection(plantinstaUser!)
-            .order(by: "plantFirstDate")
+            .order(by: "plantFirstDate", descending: false)
             .addSnapshotListener{  (snapshot, error) in
-            if ( error != nil ){
-                
-                self.makeAlert(title: "Database Error", message: error?.localizedDescription ??  "DBase Error")
-                
-            }else {
-                self.plantlist.removeAll() // plantlist disizini boşaltıyor.
-                if snapshot?.isEmpty == false && snapshot != nil {
-                    for document in snapshot!.documents {
-                        
+                if ( error != nil ){
+                    
+                    self.makeAlert(title: "Database Error", message: error?.localizedDescription ??  "DBase Error")
+                    
+                }else {
+                    self.plantlist.removeAll() // plantlist disizini boşaltıyor.
+                    if snapshot?.isEmpty == false && snapshot != nil {
+                        for document in snapshot!.documents {
+                            
                             let plantAvatar = document.get("plantAvatar") as! String
                             let plantFirstDate = document.get("plantFirstDate") as! String
                             let plantName = document.get("plantName") as! String
                             let plantPostCount = document.get("plantPostCount") as? String
                             let plantUserMail = document.get("plantUserMail") as! String
-                        let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount ?? "0", plantUserMail: plantUserMail)
-                        
-                        self.plantlist.append(plantDiary)
-                        
-                        
-                        
+                            let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount ?? "0", plantUserMail: plantUserMail)
+                            
+                            self.plantlist.append(plantDiary)
+                            
+                            
+                            
+                        }
+                        self.tableView.reloadData()
                     }
-                    self.tableView.reloadData()
                 }
             }
-        }
         
         
     }
-
+    
     func makeDeleteAlert(title: String, message : String) {
         let alert = UIAlertController(title:title ,message: message, preferredStyle: UIAlertController.Style.alert)
         let okbutton = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { action in
@@ -202,23 +211,23 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         self.present(alert, animated: true, completion: nil)
     }
     
-        
- /****SEARCH BAR *******/
+    
+    /****SEARCH BAR *******/
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-       // let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        // let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         let searchText = searchBar.text!
-         
+        
         filterForSearchTextAndScopeButton(searchText: searchText)
-       
+        
     }
     
     
     
     // https://www.youtube.com/watch?v=DAHG0orOxKo
     func filterForSearchTextAndScopeButton ( searchText: String ){
-       
+        
         filteredPlants = plantlist.filter
         
         { plant in
@@ -229,7 +238,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                 return searchTextMatch
             }
             
-          else
+            else
             {
                 
                 return true
@@ -257,8 +266,8 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         searchPlant.searchBar.delegate = self
         
     }
-     
-/**LONG PRESS METODU ******/
+    
+    /**LONG PRESS METODU ******/
     
     @objc func handleLongPress(longPressGesture: UILongPressGestureRecognizer) {
         
@@ -273,42 +282,42 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             if (searchPlant.isActive){
                 plantToDelete = filteredPlants[indexPath!.row].plantName
                 
-               //filtre edilen isimi ,plantlist içinde olduğu index numarasını buluyor
+                //filtre edilen isimi ,plantlist içinde olduğu index numarasını buluyor
                 let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[indexPath!.row].plantName)
-                                                             })
-                    do { try! indexToDelete = filteredIndex
-                        
-                }
+                })
+                do { try! indexToDelete = filteredIndex
                     
+                }
+                
             }else {
                 plantToDelete = plantlist[indexPath!.row].plantName
                 indexToDelete = indexPath?.row
                 print("\(plantlist[indexPath!.row].plantName)")
             }
-           
+            
             makeDeleteAlert(title: "Plant deleting", message: "\(plantToDelete!) diary will delete...")
         }
     }
     func deletePlant(planttodelete: String,index : Int){
-     
         
-            firestoreDatabase.collection(plantinstaUser!)
-                .document(planttodelete)
-                .delete() { err in
+        
+        firestoreDatabase.collection(plantinstaUser!)
+            .document(planttodelete)
+            .delete() { err in
                 if let err = err {
                     print("Error removing document: \(err)")
                 } else {
                     print("Deleted!")
-                   
+                    
                     
                 }
             }
-            self.plantlist.remove(at: index)
+        self.plantlist.remove(at: index)
         
-            searchPlant.searchBar.text = "" // search bar 'ı boş karakter tanımlayıp tüm listeyi göstermek için
-            
-            self.tableView.reloadData()
-           
-       
-        }
+        searchPlant.searchBar.text = "" // search bar 'ı boş karakter tanımlayıp tüm listeyi göstermek için
+        
+        self.tableView.reloadData()
+        
+        
+    }
 }

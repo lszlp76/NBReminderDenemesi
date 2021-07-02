@@ -52,7 +52,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        formatter.locale = Locale.current
+        //formatter.locale = Locale.current
 
         //let currentDate = formatter.string(from: now)
         
@@ -96,8 +96,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       feedList.rowHeight = UITableView.automaticDimension
-      //feedList.estimatedRowHeight = 600
+       //feedList.rowHeight = UITableView.automaticDimension
+      feedList.estimatedRowHeight = 200
         //FeedView.translatesAutoresizingMaskIntoConstraints = false
         print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*
@@ -122,7 +122,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
       
-        let rightButton = UIBarButtonItem(title: "Add New Plant", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
+        let rightButton = UIBarButtonItem(title: "Add New Page", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
         navigationItem.rightBarButtonItem = rightButton
         
         //self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
@@ -226,7 +226,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         firestoreDatabase.collection(plantinstaUser!)
             .document(choosenPlant)
             .collection("history")
-            .order(by: "date")
+            .order(by: "date" ,descending: true)
+        
             .getDocuments { (snapshot, error) in
                 if error != nil {
                     self.makeAlert(title: "Database Error", message: error?.localizedDescription ?? "DBase Error")
@@ -235,11 +236,11 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
                     if snapshot?.isEmpty == false && snapshot != nil {
                         for document in snapshot!.documents
                         {let comments = document.get("comment") as! String
-                           // let date = document.get("date")  as! Timestamp
+                            let date = (document.get("date")  as! Timestamp).dateValue()
                             let image = document.get("image") as! String
                             
                             let id = document.documentID
-                            let feed = FeedPlant(comment: comments, date: Date() , image: image)
+                            let feed = FeedPlant(comment: comments, date: date , image: image)
                             print("Serverdaki id : \(id)")
                             self.feedArray
                                 .append(feed)
@@ -399,9 +400,30 @@ extension FeedViewController: TableViewNew {
     
     func onClickedTrash(index: Int) {
         print(" Trash \(idArray[index])deleted!")
-        deleteFeedPlant(id: idArray[index],index: index) // veritabanından silme
+        
+        let alert = UIAlertController(title:"Plant Diary Page Deleting" ,message: "Your plant diary's page will delete permenantly ! \n Are you sure ?" , preferredStyle: UIAlertController.Style.alert)
+        let okbutton = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { action in
+            //print ("OK pressed")
+            self.deleteFeedPlant(id: self.idArray[index],index: index) // veritabanından silme
+             
+            
+        } )
+        let nokbutton = UIAlertAction(title:"No",style: UIAlertAction.Style.default,handler: { action in
+            //print ("NOK pressed")
+        })
+        alert.addAction(okbutton)
+        alert.addAction(nokbutton)
+        self.present(alert, animated: true, completion: nil)
         
        
+        
+    }
+    func makeDeleteAlert(title: String, message : String) {
+        
+       
+        
+       
+        
         
     }
 }

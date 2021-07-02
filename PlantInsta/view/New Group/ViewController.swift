@@ -46,14 +46,15 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
       authorizationButton.translatesAutoresizingMaskIntoConstraints = false
       authorizationButton.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)
       authorizationButton.cornerRadius = 10
+        authorizationButton
         view.addSubview(authorizationButton)
       
         NSLayoutConstraint.activate([
             
           //  authorizationButton.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: 100),
-            authorizationButton.bottomAnchor.constraint(equalTo: signInButton.bottomAnchor,constant: 38),
-            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 25),
-        authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -25)
+            authorizationButton.bottomAnchor.constraint(equalTo: signInButton.bottomAnchor,constant: 32),
+            authorizationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor,constant: 30),
+        authorizationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -30)
             
         ])
      /**
