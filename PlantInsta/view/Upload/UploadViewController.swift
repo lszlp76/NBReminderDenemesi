@@ -115,13 +115,13 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
         
         
       //CAMERA
-        
+        /*
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alert.addAction(UIAlertAction.init(title: "Camera", style: .default, handler: { (_) in
                 self.presentImagePicker(controller: self.imagePickerController!, source: .camera)
             }))
         }
-        
+        */
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             alert.addAction(UIAlertAction.init(title: "Photo Library", style: .default, handler: { (_) in
                
@@ -156,7 +156,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
          
-//        picker.dismiss(animated: true) {
+       picker.dismiss(animated: true) //{
 //                 picker.delegate = nil
 //                 self.imagePickerController = nil
 //             }

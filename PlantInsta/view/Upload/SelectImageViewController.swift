@@ -64,6 +64,8 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         commentText.text = "Add your comments here..."
         commentText.font = UIFont.italicSystemFont(ofSize: 14)
         commentText.textColor = UIColor.lightGray
+        
+        
         // *** klavye nedeniyle yazımı engelleyen durumu ortadan kaldırma ***
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -90,7 +92,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            
+            print("enter")
            commentText.resignFirstResponder()
             return false
         }
@@ -119,7 +121,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == diaryNameText {
-         self.view.viewWithTag(1)?.select(nil)
+         
            
         }
        return true
@@ -134,7 +136,7 @@ override func viewWillDisappear(_ animated: Bool) {
 @objc func keyboardWillShow(notification: NSNotification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
         if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= keyboardSize.height
+            self.view.frame.origin.y -= keyboardSize.height*0.75
         }
     }
 }
@@ -294,6 +296,7 @@ override func viewWillDisappear(_ animated: Bool) {
                        
                         print("Loaded")
                         self.uploadTask?.removeAllObservers()
+                        self.dismiss(animated: true, completion: nil)
                         self.performSegue(withIdentifier: "toTabBarView", sender: nil)
                     }
                    

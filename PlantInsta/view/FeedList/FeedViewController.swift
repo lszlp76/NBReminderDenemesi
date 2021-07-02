@@ -63,8 +63,10 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         cell.dateText.text = formatter.string(from: feedArray[indexPath.row].date)
         cell.commentText.text = feedArray[indexPath.row].comment
         //cell.feedImage.image = UIImage(named: "deneme.png")
-        //let transformer = SDImageResizingTransformer(size: CGSize(width: 414, height: 244), scaleMode: .aspectFill)
-        cell.feedImage.sd_setImage (with: URL(string: feedArray[indexPath.row].image))//,placeholderImage: nil, context: [.imageTransformer: transformer])
+        //let transformer = SDImageResizingTransformer(size: CGSize(width: 400, height: 400), scaleMode: .aspectFill)
+        
+        
+        cell.feedImage.sd_setImage (with: URL(string: feedArray[indexPath.row].image) ) //,placeholderImage: nil, context: [.imageTransformer: transformer])
         
        /*
          6 . tableviewnew için yaratılan celldelegate ları çağırıp
@@ -96,8 +98,8 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       //feedList.rowHeight = UITableView.automaticDimension
-      feedList.estimatedRowHeight = 200
+       feedList.rowHeight = UITableView.automaticDimension
+      feedList.estimatedRowHeight = 400
         //FeedView.translatesAutoresizingMaskIntoConstraints = false
         print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*
