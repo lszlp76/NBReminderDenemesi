@@ -46,8 +46,8 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.dataSource = self
         initSearchController()
         
-        
         getPlantData()
+      
         
         //Long Press
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
@@ -161,6 +161,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             
             self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
         }
+     
         return cell
     }
     
@@ -178,17 +179,20 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     /**FİREBASE DATA ALMAK ****/
     func getPlantData() {
-        
+        self.plantlist.removeAll()
         firestoreDatabase.collection(plantinstaUser!)
             .order(by: "plantFirstDate", descending: false)
-            .addSnapshotListener{  (snapshot, error) in
+            .addSnapshotListener{ [self]  (snapshot, error) in
                 if ( error != nil ){
                     
                     self.makeAlert(title: "Database Error", message: error?.localizedDescription ??  "DBase Error")
                     
                 }else {
-                    self.plantlist.removeAll() // plantlist disizini boşaltıyor.
+                    // plantlist disizini boşaltıyor.
+                    
                     if snapshot?.isEmpty == false && snapshot != nil {
+                        self.plantlist.removeAll()
+                       
                         for document in snapshot!.documents {
                             
                             let plantAvatar = document.get("plantAvatar") as! String
@@ -200,21 +204,21 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                                                        if !((document.get("plantFavorite") != nil)){
                                                            plantFavorite = true //(document.get("plantFavorite")) as! Bool
                                                        }else {
-                                                           plantFavorite = false
+                                                          plantFavorite = document.get("plantFavorite") as! Bool
                                                        }
                                                       
                                                        
-                                                       let plantDiary = PlantDiary(plantAvatar: plantAvatar,plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount!, plantUserMail: plantUserMail ?? "0", plantFavorite: plantFavorite)
+                            let plantDiary = PlantDiary(plantAvatar: plantAvatar,plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount!, plantUserMail: plantUserMail , plantFavorite: plantFavorite)
                                                        
-                                                       self.plantlist.append(plantDiary)
-
+                                                       
                             
                             self.plantlist.append(plantDiary)
-                            
+                          
                             
                             
                         }
                         self.tableView.reloadData()
+                     
                     }
                 }
             }
@@ -310,10 +314,11 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                 plantToDelete = filteredPlants[indexPath!.row].plantName
                 
                 //filtre edilen isimi ,plantlist içinde olduğu index numarasını buluyor
-                let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[indexPath!.row].plantName)
-                })
+               
+               let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[indexPath!.row].plantName)
+                })!
                 do { try! indexToDelete = filteredIndex
-                    
+                   
                 }
                 
             }else {
@@ -347,16 +352,62 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
     }
+    func favoriteAdjustment(index: Int ){
+        if (searchPlant.isActive){
+            
+            if filteredPlants[index].plantFavorite == false {
+                firestoreDatabase.collection(plantinstaUser!)
+                    .document(filteredPlants[index].plantName)
+                    .updateData( [ "plantFavorite" : true])
+                
+            }else {
+                firestoreDatabase.collection(plantinstaUser!)
+                    .document(filteredPlants[index].plantName)
+                    .updateData( [ "plantFavorite" : false])
+            }
+            
+            
+        }
+        
+        else{
+        if plantlist[index].plantFavorite == false {
+            firestoreDatabase.collection(plantinstaUser!)
+                .document(plantlist[index].plantName)
+                .updateData( [ "plantFavorite" : true])
+            
+        }else {
+            firestoreDatabase.collection(plantinstaUser!)
+                .document(plantlist[index].plantName)
+                .updateData( [ "plantFavorite" : false])
+        }
+        }
+        self.tableView.reloadData()
+    }
+    
+    
 }
 
 @available(iOS 13.0, *)
 extension PlantListViewController : tableViewNew {
     
+   
     func addToFavClicked(index : Int){
-        print ("Clicked \(index)")
-      
+        if (searchPlant.isActive){
+         
+            // burası olmadı
+           
+           
+                self.favoriteAdjustment(index: index)
+             
+            
+            
+           
+            
+        }else{
+            self.favoriteAdjustment(index: index)
+        }
         
         
-        
+     
 }
 }

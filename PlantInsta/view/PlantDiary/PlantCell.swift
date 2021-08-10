@@ -23,23 +23,27 @@ class PlantCell: UITableViewCell {
     @IBOutlet weak var AddToFav: UIButton!
     @IBOutlet weak var PlantCreatedDate: UILabel!
     @IBOutlet weak var PlantDiaryName: UILabel!
+    var cellDelegate: tableViewNew?
+    var index : IndexPath = []
     @IBAction func AddToFavButton(_ sender: Any) {
         
         cellDelegate?.addToFavClicked(index: index.row)
+       
         if self.AddToFav.image(for: .normal) == UIImage(systemName: "star.fill"){
                 self.AddToFav.setImage(UIImage(systemName: "star"), for: .normal)
+          
                    
                 }else { // eğer plant fav olarak işaretli DEĞİL ise
                     self.AddToFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
                     
                 }
+        
 
     }
     
     
     
-    var cellDelegate: tableViewNew?
-    var index : IndexPath = []
+    
     
     @IBOutlet weak var PlantAvatarImage: UIImageView!
     override func setSelected(_ selected: Bool, animated: Bool) {
