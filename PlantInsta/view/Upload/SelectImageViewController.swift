@@ -205,7 +205,9 @@ override func viewWillDisappear(_ animated: Bool) {
                                         plantFirstDate: currentDate,
                                         plantName: self.diaryNameText.text!,
                                         plantPostCount: "1" ,
-                                    plantUserMail: (Auth.auth().currentUser?.email)!)
+                                        plantUserMail: (Auth.auth().currentUser?.email)!,
+                                                                           plantFavorite: false)
+
                                     
                                     let db = Firestore.firestore()
                                     

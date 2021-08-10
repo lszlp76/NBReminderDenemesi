@@ -13,6 +13,8 @@ import SDWebImage
 class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UISearchBarDelegate, UISearchResultsUpdating{
     
     
+    
+    
     // LONGCLİCK için UIGestureRecognizerDelegate ekle
     
     
@@ -103,6 +105,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
@@ -111,7 +114,8 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
        
         cell.contentView.backgroundColor = UIColor(red: 186, green : 186, blue : 186, alpha: 1)
        // cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: )
-       
+        cell.cellDelegate = self
+        cell.index = indexPath
         
         if (searchPlant.isActive)
         {
@@ -120,6 +124,12 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.PlantDiaryName.text = filteredPlants[indexPath.row].plantName
             cell.PostCountLabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
             self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
+            if filteredPlants[indexPath.row].plantFavorite  == true {
+                cell.AddToFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                       }else {
+                        cell.AddToFav.setImage(UIImage(systemName: "star"), for: .normal)
+                       }
+
         }
         else{
             cell.PlantAvatarImage.sd_setImage(with: URL (string: plantlist[indexPath.row].plantAvatar))
@@ -142,6 +152,12 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 14)
                 
             }
+            if plantlist[indexPath.row].plantFavorite == true {
+                cell.AddToFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                        }else {
+                            cell.AddToFav.setImage(UIImage(systemName: "star"), for: .normal)
+                        }
+
             
             self.postCounterValue = String(plantlist[indexPath.row].plantPostCount)
         }
@@ -180,7 +196,18 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                             let plantName = document.get("plantName") as! String
                             let plantPostCount = document.get("plantPostCount") as? String
                             let plantUserMail = document.get("plantUserMail") as! String
-                            let plantDiary = PlantDiary(plantAvatar: plantAvatar, plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount ?? "0", plantUserMail: plantUserMail)
+                            let plantFavorite : Bool
+                                                       if !((document.get("plantFavorite") != nil)){
+                                                           plantFavorite = true //(document.get("plantFavorite")) as! Bool
+                                                       }else {
+                                                           plantFavorite = false
+                                                       }
+                                                      
+                                                       
+                                                       let plantDiary = PlantDiary(plantAvatar: plantAvatar,plantFirstDate: plantFirstDate, plantName: plantName, plantPostCount: plantPostCount!, plantUserMail: plantUserMail ?? "0", plantFavorite: plantFavorite)
+                                                       
+                                                       self.plantlist.append(plantDiary)
+
                             
                             self.plantlist.append(plantDiary)
                             
@@ -320,4 +347,16 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
     }
+}
+
+@available(iOS 13.0, *)
+extension PlantListViewController : tableViewNew {
+    
+    func addToFavClicked(index : Int){
+        print ("Clicked \(index)")
+      
+        
+        
+        
+}
 }

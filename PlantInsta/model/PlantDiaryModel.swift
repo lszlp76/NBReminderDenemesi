@@ -15,6 +15,7 @@ struct PlantDiary  : Codable {
     var plantName : String
     var plantPostCount : String
     var plantUserMail : String
+    var plantFavorite : Bool
     
     enum CodingKeys: String, CodingKey {
         case plantAvatar
@@ -22,6 +23,9 @@ struct PlantDiary  : Codable {
         case plantName
         case plantPostCount
         case plantUserMail
+        case plantFavorite
+
+        
     }
             
   

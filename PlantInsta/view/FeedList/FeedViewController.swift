@@ -322,6 +322,7 @@ extension Data {
 //5 yaratılan yeni özelliği bu viewcontroller a  ekle
 @available(iOS 13.0, *)
 extension FeedViewController: TableViewNew {
+    
     func onClickedShare(index: Int) {
         print(" Share \(index) shared!")
         

@@ -471,13 +471,22 @@
                                                             <color key="textColor" red="0.6705882353" green="0.2784313725" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHd-LO-hho">
+                                                            <rect key="frame" x="402" y="11" width="22" height="22"/>
+                                                            <state key="normal" image="star" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="AddToFavButton:" destination="DcM-GK-UHr" eventType="touchUpInside" id="e3D-1e-8EX"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.89411771299999998" green="0.81960785390000002" blue="0.84313726430000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
+                                                        <constraint firstItem="WHd-LO-hho" firstAttribute="top" secondItem="Uwb-vP-JR2" secondAttribute="top" constant="11" id="E91-by-MpL"/>
                                                         <constraint firstItem="tMh-hH-lF4" firstAttribute="leading" secondItem="N7u-oz-9rN" secondAttribute="trailing" constant="13" id="Emm-eh-gWB"/>
                                                         <constraint firstItem="N7u-oz-9rN" firstAttribute="top" secondItem="tMh-hH-lF4" secondAttribute="top" id="F0W-wR-D8K"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="N7u-oz-9rN" secondAttribute="bottom" id="Hpm-bw-4vS"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sla-vI-h8g" secondAttribute="trailing" id="RZe-dG-Qea"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WHd-LO-hho" secondAttribute="trailing" constant="30" id="Wyq-IR-GsX"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tMh-hH-lF4" secondAttribute="trailing" constant="20" symbolic="YES" id="cRu-y5-te2"/>
                                                         <constraint firstItem="Sla-vI-h8g" firstAttribute="top" secondItem="tMh-hH-lF4" secondAttribute="bottom" constant="8" id="kKS-c9-xjs"/>
                                                         <constraint firstItem="tMh-hH-lF4" firstAttribute="leading" secondItem="Sla-vI-h8g" secondAttribute="leading" id="kms-ZL-NsX"/>
@@ -487,6 +496,7 @@
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" red="0.79706994922625252" green="1" blue="0.055505803952167199" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
+                                                    <outlet property="AddToFav" destination="WHd-LO-hho" id="VYT-xn-Nj1"/>
                                                     <outlet property="PlantAvatarImage" destination="N7u-oz-9rN" id="m41-OO-rS4"/>
                                                     <outlet property="PlantCreatedDate" destination="Sla-vI-h8g" id="eBR-OA-MbV"/>
                                                     <outlet property="PlantDiaryName" destination="tMh-hH-lF4" id="We1-Md-gOc"/>
@@ -525,14 +535,14 @@
             <objects>
                 <viewController id="Yzv-T1-84v" customClass="FeedViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="FeedView" id="oR6-Qr-XJj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-s7-NIu">
-                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-3o-ZQB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.73333333333333328" blue="0.81568627450980391" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="419" id="txB-Pw-RIM" customClass="FeedCell" customModule="PlantInsta" customModuleProvider="target">
@@ -865,6 +875,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="ZYY-DD-QS2"/>
         <segue reference="K3q-B2-fAY"/>
         <segue reference="avg-fK-8zV"/>
     </inferredMetricsTieBreakers>
@@ -876,6 +887,7 @@
         <image name="logomurveristan" width="349" height="349"/>
         <image name="menubar.rectangle" catalog="system" width="128" height="93"/>
         <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="tray.and.arrow.up" catalog="system" width="128" height="114"/>
         <namedColor name="AccentColor">

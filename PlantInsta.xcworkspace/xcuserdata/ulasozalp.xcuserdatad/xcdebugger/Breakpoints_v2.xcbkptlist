@@ -174,8 +174,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "PlantListViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -206,8 +206,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -242,6 +242,99 @@
             endingLineNumber = "53"
             landmarkName = "addImagePickerToContainerView()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F281A045-F723-40B0-B9F8-8D11616CC754"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PlantInsta/view/PlantDiary/PlantCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  uuid = "F281A045-F723-40B0-B9F8-8D11616CC754 - 41396775a6ad2327"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlantInsta.PlantCell.__allocating_init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; PlantInsta.PlantCell"
+                  moduleName = "PlantInsta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ulasozalp/Desktop/https-github.com-lszlp76-macbook/PlantInsta/view/PlantDiary/PlantCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "F281A045-F723-40B0-B9F8-8D11616CC754 - 221adf241d240508"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlantInsta.PlantCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; PlantInsta.PlantCell"
+                  moduleName = "PlantInsta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ulasozalp/Desktop/https-github.com-lszlp76-macbook/PlantInsta/view/PlantDiary/PlantCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "F281A045-F723-40B0-B9F8-8D11616CC754 - 1f5140c1bc481008"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlantInsta.PlantCell.__allocating_init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PlantInsta.PlantCell&gt;"
+                  moduleName = "PlantInsta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ulasozalp/Desktop/https-github.com-lszlp76-macbook/PlantInsta/view/PlantDiary/PlantCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "F281A045-F723-40B0-B9F8-8D11616CC754 - 6fd34d9ca53ebec4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlantInsta.PlantCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;PlantInsta.PlantCell&gt;"
+                  moduleName = "PlantInsta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ulasozalp/Desktop/https-github.com-lszlp76-macbook/PlantInsta/view/PlantDiary/PlantCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "202">
+               </Location>
+               <Location
+                  uuid = "F281A045-F723-40B0-B9F8-8D11616CC754 - 55cfe0a17627f023"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PlantInsta.PlantCell.__deallocating_deinit"
+                  moduleName = "PlantInsta"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ulasozalp/Desktop/https-github.com-lszlp76-macbook/PlantInsta/view/PlantDiary/PlantCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
