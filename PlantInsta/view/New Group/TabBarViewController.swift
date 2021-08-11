@@ -9,7 +9,15 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
 
+    
     @IBOutlet var tab: UITabBar!
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+       
+    }
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        print("sayfa \(viewController)")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

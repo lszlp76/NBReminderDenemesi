@@ -355,15 +355,16 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     func favoriteAdjustment(index: Int ){
         if (searchPlant.isActive){
             
-            if filteredPlants[index].plantFavorite == false {
+            if plantlist[index].plantFavorite == false {
                 firestoreDatabase.collection(plantinstaUser!)
-                    .document(filteredPlants[index].plantName)
+                    .document(plantlist[index].plantName)
                     .updateData( [ "plantFavorite" : true])
-                
+                self.tableView.reloadData()
             }else {
                 firestoreDatabase.collection(plantinstaUser!)
-                    .document(filteredPlants[index].plantName)
+                    .document(plantlist[index].plantName)
                     .updateData( [ "plantFavorite" : false])
+                self.tableView.reloadData()
             }
             
             
@@ -381,7 +382,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
                 .updateData( [ "plantFavorite" : false])
         }
         }
-        self.tableView.reloadData()
+        
     }
     
     
@@ -393,11 +394,13 @@ extension PlantListViewController : tableViewNew {
    
     func addToFavClicked(index : Int){
         if (searchPlant.isActive){
-         
-            // burası olmadı
+            let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[index].plantName)
+             })!
            
-           
-                self.favoriteAdjustment(index: index)
+           print("index : \(index)")
+            print("reel index: \(filteredIndex)")
+           //filteredIndex gerçek olarak gösteriyor
+                self.favoriteAdjustment(index: filteredIndex)
              
             
             

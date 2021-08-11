@@ -10,7 +10,7 @@ import Firebase
 import SDWebImage
 
 @available(iOS 13.0, *)
-class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate {
     
     var plantDate : String?
     var downloadedImage = [UIImage]()
@@ -84,8 +84,28 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
        return cell
     
     }
-    
-   
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 1  {
+            
+            print("1 e basıldı")
+           
+           
+            
+        }else {
+            tabBarController.tabBar.items![1].title = "New Plant"
+            
+        }
+    }
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        
+        if(item.tag == 1) {
+                print("1 e basıldı")
+            } else if(item.tag == 2) {
+                print("2 e basıldı")
+            }
+        print("item \(item)")
+        }
   
     func makeAlert(title: String, message : String) {
         let alert = UIAlertController(title:title ,message: message, preferredStyle: UIAlertController.Style.alert)
@@ -100,8 +120,12 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
        feedList.rowHeight = UITableView.automaticDimension
       feedList.estimatedRowHeight = 400
+        
+        self.tabBarController?.delegate = self
+        tabBarController?.tabBar.items![1].title = "Add New Page"
+    
         //FeedView.translatesAutoresizingMaskIntoConstraints = false
-        print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
+       // print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
        /*
         let image = FeedCell()
         let img: UIImage?
@@ -127,6 +151,9 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         let rightButton = UIBarButtonItem(title: "Add New Page", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
         navigationItem.rightBarButtonItem = rightButton
         
+        // 
+        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton))
+        navigationItem.rightBarButtonItems = [add, rightButton]
         //self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
        
         title = choosenPlant
