@@ -11,7 +11,8 @@ import UIKit
  https://www.ioscreator.com/tutorials/take-photo-ios-tutorial
  */
 @available(iOS 13.0, *)
-class UploadViewController: UIViewController,UIPopoverPresentationControllerDelegate, UIImagePickerControllerDelegate & UINavigationControllerDelegate {  //2
+class UploadViewController: UIViewController,UIPopoverPresentationControllerDelegate,
+                            UITabBarControllerDelegate,  UIImagePickerControllerDelegate & UINavigationControllerDelegate {  //2
 
     var imagePickerController: UIImagePickerController?
    
@@ -22,16 +23,30 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     @IBOutlet weak var selectImage: UIButton!
     @IBOutlet weak var cameraContainerView: UIView!
     
-    override func viewDidAppear(_ animated: Bool) {
-        addImagePickerToContainerView()
+//    override func viewDidAppear(_ animated: Bool) {
+//        addImagePickerToContainerView()
+//    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if entryFromFeed != nil {
+            title = "Add New Page"
+            tabBarController?.tabBar.items![1].isEnabled = false
+        }else {
+            title = "New Plant"
+            tabBarController?.tabBar.items![1].isEnabled = false
+        }
     }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "New Diary"
-        
+        self.tabBarController?.delegate = self
+        if entryFromFeed != nil {
+            title = "Add New Page"
+            tabBarController?.tabBar.items![1].isEnabled = false
+        }else {
+            title = "New Plant"
+            tabBarController?.tabBar.items![1].isEnabled = true
+        }
         imagePickerController?.delegate = self
       // camera preview yapmak için
         

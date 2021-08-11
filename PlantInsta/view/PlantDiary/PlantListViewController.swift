@@ -10,7 +10,7 @@ import Firebase
 import SDWebImage
 
 @available(iOS 13.0, *)
-class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UISearchBarDelegate, UISearchResultsUpdating{
+class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UITabBarControllerDelegate,   UISearchBarDelegate, UISearchResultsUpdating{
     
     
     
@@ -29,6 +29,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var filteredPlants = [PlantDiary]()  // arama için oluşacak dizi
     var chosenPlant = ""
+    var favoriteState : Bool = false
     var postCounterValue: String?
     var plantToDelete :String? // silinecek olan plant array adı
     var indexToDelete : Int? // silinicek olan plant array indexi
@@ -47,8 +48,8 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         initSearchController()
         
         getPlantData()
-      
-        
+        self.tabBarController?.delegate = self
+        tabBarController?.tabBar.items![1].isEnabled = true
         //Long Press
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         longPressGesture.minimumPressDuration = 0.8 // saniye olarak süre
@@ -64,11 +65,13 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         if (searchPlant.isActive){
             chosenPlant = filteredPlants[indexPath.row].plantName
             postCounterValue = (filteredPlants[indexPath.row].plantPostCount)
+            favoriteState = filteredPlants[indexPath.row].plantFavorite
             self.performSegue(withIdentifier: "toFeedList", sender: nil)
         }
         else{
             chosenPlant = plantlist[indexPath.row].plantName
             postCounterValue = (plantlist[indexPath.row].plantPostCount)
+            favoriteState = plantlist[indexPath.row].plantFavorite
             self.performSegue(withIdentifier: "toFeedList", sender: nil)
         }
         
@@ -80,11 +83,12 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             if (searchPlant.isActive){
                 let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
                 destinationVC1.choosenPlant = chosenPlant
-                
+                destinationVC1.favoriteState = favoriteState
                 destinationVC1.postCounterValue = postCounterValue
             }else {
                 let destinationVC1 = segue.destination as! FeedViewController // önce yol göster burada as! ile cast ediyorsun
                 destinationVC1.choosenPlant = self.chosenPlant
+                destinationVC1.favoriteState = favoriteState
                 // burada destinationVC ye 2nci viewcontroller uzerindeki tüm elemanları getirir. myName 2nci viewcontroller uzerindeki text yazılacak değişken.
                 destinationVC1.postCounterValue = postCounterValue
                 
@@ -393,23 +397,25 @@ extension PlantListViewController : tableViewNew {
     
    
     func addToFavClicked(index : Int){
-        if (searchPlant.isActive){
-            let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[index].plantName)
-             })!
-           
-           print("index : \(index)")
-            print("reel index: \(filteredIndex)")
-           //filteredIndex gerçek olarak gösteriyor
-                self.favoriteAdjustment(index: filteredIndex)
-             
-            
-            
-           
-            
-        }else{
-            self.favoriteAdjustment(index: index)
-        }
         
+        // fav ekleme veya silme feed den yapıldığı için buna gerek kalmadı
+//        if (searchPlant.isActive){
+//            let filteredIndex = plantlist.firstIndex(where: { $0.plantName.hasPrefix(filteredPlants[index].plantName)
+//             })!
+//
+//           print("index : \(index)")
+//            print("reel index: \(filteredIndex)")
+//           //filteredIndex gerçek olarak gösteriyor
+//                self.favoriteAdjustment(index: filteredIndex)
+//
+//
+//
+//
+//
+//        }else{
+//            self.favoriteAdjustment(index: index)
+//        }
+//
         
      
 }

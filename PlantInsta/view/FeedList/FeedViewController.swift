@@ -10,7 +10,7 @@ import Firebase
 import SDWebImage
 
 @available(iOS 13.0, *)
-class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate {
+class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate , UITabBarDelegate{
     
     var plantDate : String?
     var downloadedImage = [UIImage]()
@@ -19,14 +19,17 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     var choosenPlant : String = ""
     let firestoreDatabase = Firestore.firestore()
     var plantinstaUser = Auth.auth().currentUser?.email!
-    
+    var favoriteState: Bool = false
     var feedArray = [FeedPlant]()
     
     var chosenFeed: String = ""
     let dateFormatter = DateFormatter() // timestampi string yapmak için
+    var favoriteIcon = UIImage()
+    var addToFavButton = UIBarButtonItem()
    
-   
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.items![1].isEnabled = true
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedArray.count
@@ -84,12 +87,14 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
        return cell
     
     }
+    
+    // TABBAR add new page AYARLAMA
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         let tabBarIndex = tabBarController.selectedIndex
         if tabBarIndex == 1  {
             
-            print("1 e basıldı")
-           
+            
+        
            
             
         }else {
@@ -97,15 +102,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
             
         }
     }
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        
-        if(item.tag == 1) {
-                print("1 e basıldı")
-            } else if(item.tag == 2) {
-                print("2 e basıldı")
-            }
-        print("item \(item)")
-        }
+  
   
     func makeAlert(title: String, message : String) {
         let alert = UIAlertController(title:title ,message: message, preferredStyle: UIAlertController.Style.alert)
@@ -122,41 +119,46 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
       feedList.estimatedRowHeight = 400
         
         self.tabBarController?.delegate = self
+        
         tabBarController?.tabBar.items![1].title = "Add New Page"
-    
-        //FeedView.translatesAutoresizingMaskIntoConstraints = false
-       // print( "Feed deki sayaç değeri : \(self.postCounterValue!)" )
-       /*
-        let image = FeedCell()
-        let img: UIImage?
-        img = image.feedImage.image
-        
-        image.feedImage.frame = CGRect(x: image.feedImage.frame.origin.x, y: image.feedImage.frame.origin.y,
-                                       width: img!.size.width, height: img!.size.height);
-        
-        */
+        tabBarController?.tabBar.items![1].isEnabled = false
+       
         // ********* Navigation Bar Title ***********
         // udemy 100 nolu ders navigation
-        
         
         
         
         let backButton = UIBarButtonItem()
         
         backButton.title = "My Plants"
-       // let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
+        let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(addButton))
     
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
       
-        let rightButton = UIBarButtonItem(title: "Add New Page", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
-        navigationItem.rightBarButtonItem = rightButton
+//        let rightButton = UIBarButtonItem(title: "Add New Page", style: UIBarButtonItem   .Style.plain, target: self, action: #selector(addButton))
+//        navigationItem.rightBarButtonItem = rightButton
+//
+        //
+        if favoriteState == true {
+            favoriteIcon = UIImage(systemName: "bookmark.fill")!
+        }
+        else {
+            favoriteIcon = UIImage(systemName: "bookmark")!
+        }
+       
         
-        // 
-        let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButton))
-        navigationItem.rightBarButtonItems = [add, rightButton]
+       addToFavButton = UIBarButtonItem(
+        image: favoriteIcon.withRenderingMode(.automatic),
+            style: .plain, target: self, action: #selector(addToFavOrDelete))
+        
+      //  let addToFavButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(addToFavOrDelete))
+   //     navigationItem.rightBarButtonItem = addToFavButton
+            navigationItem.rightBarButtonItems = [rightButton,addToFavButton]
+      
         //self.navigationController?.navigationBar.topItem?.rightBarButtonItem = rightButton
        
         title = choosenPlant
+        
         feedList.delegate = self
         feedList.dataSource = self
         
@@ -166,6 +168,29 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     }
    
      
+    @objc func addToFavOrDelete (){
+        if favoriteState == false {
+            favoriteIcon = UIImage(systemName: "bookmark.fill")!
+            addToFavButton.image = favoriteIcon
+            firestoreDatabase.collection(plantinstaUser!)
+                .document(choosenPlant)
+                .updateData( [ "plantFavorite" : true])
+            
+            favoriteState = true
+            
+        }
+        
+        else
+        {favoriteIcon = UIImage(systemName: "bookmark")!
+            addToFavButton.image = favoriteIcon
+            firestoreDatabase.collection(plantinstaUser!)
+            .document(choosenPlant)
+            .updateData( [ "plantFavorite" : false])
+            
+            favoriteState = false
+        }
+        
+}
     @objc func addButton() {
        
         self.performSegue(withIdentifier: "toGallery", sender: nil)

@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if currentUser != nil {
             let board = UIStoryboard (name: "Main", bundle: nil)
             let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
-            
+         
            /*
             let vc1 = UIViewController()
             vc1.view.backgroundColor = UIColor.orange
