@@ -218,11 +218,11 @@
             <objects>
                 <viewController id="fNC-HL-O9Q" customClass="UploadViewController" customModule="PlantInsta" customModuleProvider="target" colorLabel="IBBuiltInLabel-Red" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yvV-hM-GsZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z5v-S2-YPg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.73333333333333328" blue="0.81568627450980391" alpha="0.32913389900662254" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -253,7 +253,7 @@
             <objects>
                 <viewController id="4SU-Nd-yro" customClass="SelectImageViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ntD-7z-evI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
                             <userLayoutGuide location="18" affinity="minX"/>
@@ -261,7 +261,7 @@
                         </userGuides>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jgb-nx-YP1">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uTc-vD-6Wp">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="410"/>
@@ -297,7 +297,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXe-vj-cb6">
-                                        <rect key="frame" x="0.0" y="410" width="414" height="398"/>
+                                        <rect key="frame" x="0.0" y="410" width="414" height="263"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                 </subviews>
@@ -412,7 +412,7 @@
         <scene sceneID="RuK-pm-SH4">
             <objects>
                 <viewController id="BcK-5X-9gE" customClass="PlantListViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="IqE-YS-oJd">
+                    <view key="view" contentMode="scaleToFill" id="IqE-YS-oJd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -535,14 +535,14 @@
             <objects>
                 <viewController storyboardIdentifier="FeedVC" id="Yzv-T1-84v" customClass="FeedViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="FeedView" id="oR6-Qr-XJj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eXW-s7-NIu">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="756"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Wc-3o-ZQB">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="756"/>
                                         <color key="backgroundColor" red="0.97254901960784312" green="0.73333333333333328" blue="0.81568627450980391" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedCell" rowHeight="419" id="txB-Pw-RIM" customClass="FeedCell" customModule="PlantInsta" customModuleProvider="target">
@@ -705,11 +705,11 @@
             <objects>
                 <viewController id="b8F-Qy-xyy" customClass="BigImageViewController" customModule="PlantInsta" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0vp-L8-wB0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M2z-o4-PEa">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="z5V-9f-3WO"/>
@@ -876,8 +876,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZYY-DD-QS2"/>
-        <segue reference="K3q-B2-fAY"/>
+        <segue reference="LSZ-is-4RU"/>
         <segue reference="avg-fK-8zV"/>
     </inferredMetricsTieBreakers>
     <resources>

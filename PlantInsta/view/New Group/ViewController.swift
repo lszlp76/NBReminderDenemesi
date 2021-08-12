@@ -228,6 +228,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
         }
     }
     @IBAction func signUpClicked(_ sender: Any) {
+        makeAlert(title : "Membership" , message: "Type your prefered e-mail and password then press SignUp link")
         if emailtext.text != ""  && passwordText.text != ""
         {
             Auth.auth().createUser(withEmail: emailtext.text!, password: passwordText.text!) { (authData, error) in

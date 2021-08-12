@@ -251,35 +251,72 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func updateSearchResults(for searchController: UISearchController) {
         let searchBar = searchController.searchBar
-        // let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
+        let scopeButton = searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex]
         let searchText = searchBar.text!
         
-        filterForSearchTextAndScopeButton(searchText: searchText)
+        filterForSearchTextAndScopeButton(searchText: searchText, scopeButton: scopeButton)
         
     }
     
     
     
     // https://www.youtube.com/watch?v=DAHG0orOxKo
-    func filterForSearchTextAndScopeButton ( searchText: String ){
-        
-        filteredPlants = plantlist.filter
-        
-        { plant in
+    func filterForSearchTextAndScopeButton ( searchText: String , scopeButton : String = "All"){
+        if (scopeButton != "Favorites") {
+            filteredPlants = plantlist.filter
             
-            if ( searchPlant.searchBar.text != "")
-            {
-                let searchTextMatch = plant.plantName.lowercased().contains(searchText.lowercased())
-                return searchTextMatch
-            }
+           
             
-            else
-            {
+            { plant in
                 
-                return true
-            }
+                
+                
+                   let  scopeMatch = (scopeButton == "All")
+                    if ( searchPlant.searchBar.text != "")
+                    {
+                        let searchTextMatch = plant.plantName.lowercased().contains(searchText.lowercased())
+                        return searchTextMatch && scopeMatch
+                    }
+                    
+                    else
+                    {
+                        
+                        return true
+                    }
+                }
+        }else
+        { print ("bookmark")
+            
+            filteredPlants = plantlist.filter
+            
+            { plant in
+                
+            
+                let  scopeMatch = (scopeButton == "Favorites" && plant.plantFavorite == true)
+                    if ( searchPlant.searchBar.text != "" )
+                    {
+                        let searchTextMatch = plant.plantName.lowercased().contains(searchText.lowercased() )
+                        
+                        return searchTextMatch && scopeMatch
+                    }
+                    
+                    else
+                    {
+                        // bookmarkları döndürmek için
+                        
+                        return scopeMatch
+                    }
+                }
+            
+            
+            
             
         }
+        
+        
+        
+            
+       
         self.tableView.reloadData()
     }
     
@@ -297,7 +334,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         searchPlant.searchBar.barStyle = .black
         navigationItem.searchController = searchPlant
         navigationItem.hidesSearchBarWhenScrolling = false
-        //searchPlant.searchBar.scopeButtonTitles = [""]
+        searchPlant.searchBar.scopeButtonTitles = ["All","Favorites"]
         searchPlant.searchBar.delegate = self
         
     }

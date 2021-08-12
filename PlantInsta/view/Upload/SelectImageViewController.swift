@@ -167,7 +167,7 @@ override func viewWillDisappear(_ animated: Bool) {
                 
                 let uuid = UUID().uuidString
                 print(selectedImageView.image?.size as Any)
-                if let data = selectedImageView.image?.jpegData(compressionQuality: 0.5)
+                if let data = selectedImageView.image?.jpegData(compressionQuality: 0.8)
                 {
                 let imageReference = images.child( "\(uuid).jpg")
                     

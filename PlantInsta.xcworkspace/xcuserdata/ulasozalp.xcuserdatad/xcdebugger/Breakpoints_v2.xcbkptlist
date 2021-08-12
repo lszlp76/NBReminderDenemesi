@@ -286,8 +286,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "364"
+            endingLineNumber = "364"
             landmarkName = "handleLongPress(longPressGesture:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "360"
-            endingLineNumber = "360"
+            startingLineNumber = "397"
+            endingLineNumber = "397"
             landmarkName = "favoriteAdjustment(index:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -382,8 +382,8 @@
             filePath = "PlantInsta/view/PlantDiary/PlantListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "addToFavClicked(index:)"
             landmarkType = "7">
          </BreakpointContent>

@@ -140,10 +140,10 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
 //
         //
         if favoriteState == true {
-            favoriteIcon = UIImage(systemName: "bookmark.fill")!
+            favoriteIcon = UIImage(systemName: "star.fill")!
         }
         else {
-            favoriteIcon = UIImage(systemName: "bookmark")!
+            favoriteIcon = UIImage(systemName: "star")!
         }
        
         
@@ -170,7 +170,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
      
     @objc func addToFavOrDelete (){
         if favoriteState == false {
-            favoriteIcon = UIImage(systemName: "bookmark.fill")!
+            favoriteIcon = UIImage(systemName: "star.fill")!
             addToFavButton.image = favoriteIcon
             firestoreDatabase.collection(plantinstaUser!)
                 .document(choosenPlant)
@@ -181,7 +181,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         }
         
         else
-        {favoriteIcon = UIImage(systemName: "bookmark")!
+        {favoriteIcon = UIImage(systemName: "star")!
             addToFavButton.image = favoriteIcon
             firestoreDatabase.collection(plantinstaUser!)
             .document(choosenPlant)
