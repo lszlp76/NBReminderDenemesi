@@ -12,7 +12,7 @@ protocol tableViewNew{
 }
 
 @available(iOS 13.0, *)
-class PlantCell: UITableViewCell {
+class PlantCell: UITableViewCell  {
 
     override func awakeFromNib() {
         super.awakeFromNib()

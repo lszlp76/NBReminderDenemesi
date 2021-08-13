@@ -114,7 +114,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
         formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as! PlantCell
-        
+    
        
         cell.contentView.backgroundColor = UIColor(red: 186, green : 186, blue : 186, alpha: 1)
        // cell.detailTextLabel?.font = UIFont.preferredFont(forTextStyle: )

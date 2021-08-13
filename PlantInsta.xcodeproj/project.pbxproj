@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F90D4A32263817FF00E9615E /* Servie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4A31263817FF00E9615E /* Servie.swift */; };
+		F914B9C026C54A9200BE0979 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914B9BF26C54A9200BE0979 /* CollectionViewController.swift */; };
+		F914B9C226C54AA900BE0979 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914B9C126C54AA900BE0979 /* CollectionViewCell.swift */; };
 		F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9215A09262EB87E00DE7CE4 /* WebViewController.swift */; };
 		F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */; };
 		F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94302D4263347CD0057399F /* TabBarViewController.swift */; };
@@ -39,6 +41,8 @@
 		23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantInsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.debug.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.debug.xcconfig"; sourceTree = "<group>"; };
 		F90D4A31263817FF00E9615E /* Servie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servie.swift; sourceTree = "<group>"; };
+		F914B9BF26C54A9200BE0979 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		F914B9C126C54AA900BE0979 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F9215A09262EB87E00DE7CE4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F9215A0D262EC85600DE7CE4 /* PlantInsta.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantInsta.entitlements; sourceTree = "<group>"; };
 		F9232BE926316DE800AAD5B0 /* SelectImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectImageViewController.swift; sourceTree = "<group>"; };
@@ -208,6 +212,8 @@
 			children = (
 				F9D36329262DA154002460B3 /* PlantCell.swift */,
 				F96C7F1A262D6915002F263A /* PlantListViewController.swift */,
+				F914B9BF26C54A9200BE0979 /* CollectionViewController.swift */,
+				F914B9C126C54AA900BE0979 /* CollectionViewCell.swift */,
 			);
 			path = PlantDiary;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				F96C7F1B262D6915002F263A /* PlantListViewController.swift in Sources */,
 				F96C7F1E262D6930002F263A /* UploadViewController.swift in Sources */,
 				F9D36361262E2691002460B3 /* BigImageViewController.swift in Sources */,
+				F914B9C226C54AA900BE0979 /* CollectionViewCell.swift in Sources */,
 				F9CB29952629856E00144B28 /* ViewController.swift in Sources */,
 				F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */,
 				F9232BEA26316DE800AAD5B0 /* SelectImageViewController.swift in Sources */,
@@ -374,6 +381,7 @@
 				F9215A0A262EB87E00DE7CE4 /* WebViewController.swift in Sources */,
 				F94302D5263347CD0057399F /* TabBarViewController.swift in Sources */,
 				F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */,
+				F914B9C026C54A9200BE0979 /* CollectionViewController.swift in Sources */,
 				F9768ADF2669162C00EE7B94 /* CustomAlbum.swift in Sources */,
 				F9CB29932629856E00144B28 /* SceneDelegate.swift in Sources */,
 			);
