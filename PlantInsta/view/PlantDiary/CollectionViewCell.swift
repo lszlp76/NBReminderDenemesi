@@ -14,7 +14,9 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var plantDiartName: UILabel!
     @IBOutlet weak var createdDate: UILabel!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var pageNumber: UILabel!
+    @IBOutlet weak var PostCountLabel: UILabel!
+    
+    @IBOutlet weak var addTofav: UIButton!
     
     let firestoreDatabase = Firestore.firestore()
     var plantinstaUser = Auth.auth().currentUser?.email!

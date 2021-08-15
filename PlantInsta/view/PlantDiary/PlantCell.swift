@@ -19,8 +19,8 @@ class PlantCell: UITableViewCell  {
         // Initialization code
     }
 
-    @IBOutlet weak var PostCountLabel: UILabel!
-    @IBOutlet weak var AddToFav: UIButton!
+    @IBOutlet weak var postcountlabel: UILabel!
+    @IBOutlet weak var add_toFav: UIButton!
     @IBOutlet weak var PlantCreatedDate: UILabel!
     @IBOutlet weak var PlantDiaryName: UILabel!
     

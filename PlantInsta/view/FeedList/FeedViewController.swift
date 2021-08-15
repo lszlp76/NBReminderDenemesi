@@ -29,6 +29,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
    
     override func viewWillDisappear(_ animated: Bool) {
         tabBarController?.tabBar.items![1].isEnabled = true
+        tabBarController?.tabBar.items![1].title = "New Diary"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,7 +121,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         self.tabBarController?.delegate = self
         
-        tabBarController?.tabBar.items![1].title = "Add New Page"
+        tabBarController?.tabBar.items![1].title = "New Diary"
         tabBarController?.tabBar.items![1].isEnabled = false
        
         // ********* Navigation Bar Title ***********

@@ -27,11 +27,15 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
 //        addImagePickerToContainerView()
 //    }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.items![1].isEnabled = true
+        tabBarController?.tabBar.items![1].title = "New Diary"
+    }
     override func viewWillAppear(_ animated: Bool) {
         if entryFromFeed != nil {
             title = "Add New Page"
             tabBarController?.tabBar.items![1].isEnabled = false
+            tabBarController?.tabBar.items![1].title = "New Diary"
         }else {
             title = "New Plant"
             tabBarController?.tabBar.items![1].isEnabled = false

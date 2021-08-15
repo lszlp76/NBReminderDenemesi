@@ -126,12 +126,12 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.PlantAvatarImage.sd_setImage(with: URL (string: filteredPlants[indexPath.row].plantAvatar))
             cell.PlantCreatedDate.text = filteredPlants[indexPath.row].plantFirstDate
             cell.PlantDiaryName.text = filteredPlants[indexPath.row].plantName
-            cell.PostCountLabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
+            cell.postcountlabel.text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
             self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
             if filteredPlants[indexPath.row].plantFavorite  == true {
-                cell.AddToFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                cell.add_toFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
                        }else {
-                        cell.AddToFav.setImage(UIImage(systemName: "star"), for: .normal)
+                        cell.add_toFav.setImage(UIImage(systemName: "star"), for: .normal)
                        }
 
         }
@@ -143,23 +143,23 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
             if Int(self.plantlist[indexPath.row].plantPostCount)! > 1
             {
                 let word = "pages"
-                cell.PostCountLabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
+                cell.postcountlabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
             }
             else if Int(self.plantlist[indexPath.row].plantPostCount)! == 1
             {
                 let word = "page"
-                cell.PostCountLabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
+                cell.postcountlabel.text = "\(String(plantlist[indexPath.row].plantPostCount)) \(word)"
             } else  {
-                cell.PostCountLabel.text = "No page in this diary !"
+                cell.postcountlabel.text = "No page in this diary !"
                 
                 cell.contentView.backgroundColor = UIColor( red: 207/255, green: 216/255, blue : 220/255, alpha:1)
                 cell.detailTextLabel?.font = UIFont.italicSystemFont(ofSize: 14)
                 
             }
             if plantlist[indexPath.row].plantFavorite == true {
-                cell.AddToFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                cell.add_toFav.setImage(UIImage(systemName: "star.fill"), for: .normal)
                         }else {
-                            cell.AddToFav.setImage(UIImage(systemName: "star"), for: .normal)
+                            cell.add_toFav.setImage(UIImage(systemName: "star"), for: .normal)
                         }
 
             
