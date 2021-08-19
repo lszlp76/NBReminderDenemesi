@@ -31,9 +31,10 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     let searchPlant = UISearchController()
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var PostCountLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "My Plant Diaries"
         collectionView.delegate = self
         collectionView.dataSource = self
         initSearchController()
@@ -56,9 +57,9 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
     //size widhtxheight
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-      let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+       let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
        let size:CGFloat = (view.frame.size.width-space) / 2.0
-       return CGSize(width: size, height: view.frame.size.width)
+       return CGSize(width: size, height: view.frame.size.width-90)
 //
 //
 //        //return CGSize(width: (view.bounds.width/2) , height: view.frame.size.width)
@@ -95,7 +96,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
             cell.imageView.sd_setImage(with: URL (string: filteredPlants[indexPath.row].plantAvatar))
             cell.createdDate.text = filteredPlants[indexPath.row].plantFirstDate
             cell.plantDiartName.text = filteredPlants[indexPath.row].plantName
-            cell.PostCountLabel    .text = "You have \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
+            cell.PostCountLabel    .text = " \(String(filteredPlants[indexPath.row].plantPostCount)) pages"
             self.postCounterValue = String(filteredPlants[indexPath.row].plantPostCount)
             if filteredPlants[indexPath.row].plantFavorite  == true {
                 cell.addTofav.setImage(UIImage(systemName: "star.fill"), for: .normal)

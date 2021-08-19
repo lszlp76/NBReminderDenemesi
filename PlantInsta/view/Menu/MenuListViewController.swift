@@ -24,7 +24,7 @@ class MenuListViewController: UIViewController , UITableViewDelegate,UITableView
         let cell = UITableViewCell()
         cell.textLabel?.text = utilitylist[indexPath.row]
         cell.textLabel?.textColor = UIColor (red: 171/255, green: 71/255, blue: 188/255, alpha: 1)
-        cell.contentView.backgroundColor = UIColor( red:248/255, green: 187/255, blue :208/255,alpha: 0.33)
+        cell.contentView.backgroundColor =  UIColor( red:204/255, green: 255/255, blue :144/255,alpha: 1)
         
         return cell
     }

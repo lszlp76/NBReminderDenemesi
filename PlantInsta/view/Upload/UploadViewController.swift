@@ -44,6 +44,8 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.delegate = self
+        
+        imagePickerController?.delegate = self
         if entryFromFeed != nil {
             title = "Add New Page"
             tabBarController?.tabBar.items![1].isEnabled = false
@@ -51,7 +53,8 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
             title = "New Plant"
             tabBarController?.tabBar.items![1].isEnabled = true
         }
-        imagePickerController?.delegate = self
+        
+       
       // camera preview yapmak için
         
        addImagePickerToContainerView()
@@ -63,15 +66,21 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
         
     }
     
+    //Preview çalıştırma
+    
     func addImagePickerToContainerView(){
-
+        
+        
         imagePickerController = UIImagePickerController()
        
         
         
         if UIImagePickerController.isCameraDeviceAvailable( UIImagePickerController.CameraDevice.front) {
-            imagePickerController?.delegate = self
+            
             imagePickerController?.sourceType = UIImagePickerController.SourceType.camera
+            
+            imagePickerController?.delegate = self
+            imagePickerController?.sourceType = .camera
 
                 //add as a childviewcontroller
             addChild((imagePickerController!))
@@ -86,7 +95,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
             }
         }
     
-    // CAMERA PREVİEW AÇMA
+ 
     @IBAction func catchit(_ sender: Any) {
         
        
@@ -172,10 +181,10 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
            
             
         selectedImage = image
-    
+        picker.dismiss(animated: true)
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
          
-       picker.dismiss(animated: true) //{
+        //{
 //                 picker.delegate = nil
 //                 self.imagePickerController = nil
 //             }

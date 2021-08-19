@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="118" height="118" viewBox="0 0 118 118">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#eb0c0c"/>
+      <stop offset="0.095" stop-color="#e00c0c"/>
+      <stop offset="0.563" stop-color="#f21c1c"/>
+      <stop offset="0.968" stop-color="#5c2d2d"/>
+      <stop offset="1" stop-color="#660a0a"/>
+    </radialGradient>
+    <filter id="buttonpressed" x="0" y="0" width="118" height="118" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#f6eded" flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#buttonpressed)">
+    <g id="buttonpressed-2" data-name="buttonpressed" transform="translate(9 6)" stroke="#4db164" stroke-width="5" fill="url(#radial-gradient)">
+      <circle cx="50" cy="50" r="50" stroke="none"/>
+      <circle cx="50" cy="50" r="47.5" fill="none"/>
+    </g>
+  </g>
+</svg>

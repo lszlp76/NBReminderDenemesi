@@ -46,7 +46,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
       authorizationButton.translatesAutoresizingMaskIntoConstraints = false
       authorizationButton.addTarget(self, action: #selector(handleLogInWithAppleID), for: .touchUpInside)
       authorizationButton.cornerRadius = 10
-        authorizationButton
+    
         view.addSubview(authorizationButton)
       
         NSLayoutConstraint.activate([
@@ -78,6 +78,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
             
             let authViewController = authUI.authViewController()
             self.present(authViewController, animated: true)
+            
             
         }
         
@@ -119,7 +120,10 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
             let firstusage = UserDefaults.standard
             if firstusage.integer(forKey: "firstUsage") == 1 {
                 print("onboarding doesnt start")
-                self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                
+                self.dismiss(animated: true) {
+                    self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                }
                 
             }
             else {
@@ -128,7 +132,10 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
                 firstusage.synchronize()
                 // onboarding pages.
                 print("onboarding starts")
-                self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                self.dismiss(animated: true) {
+                    self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                }
+                
             }
             
             
