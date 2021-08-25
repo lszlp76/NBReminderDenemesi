@@ -2,7 +2,7 @@
 //  SelectImageViewController.swift
 //  PlantInsta
 //
-//  Created by ulas özalp on 22.04.2021.
+//  Created by ulas özalp on 22.04.2021.ö
 //
 // galeri açma https://www.youtube.com/watch?v=wDzk5KDe6Uw
 import UIKit
@@ -18,6 +18,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     var postCountValue : String?
     var rightNavButton : UIBarButtonItem!
     // entryFromFeed nil ise plant , 1 ise feed demek olacak
+   
    
    
     @IBOutlet weak var selectedImageView: UIImageView!
@@ -46,9 +47,8 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         progressView.isHidden = true
         rightNavButton = UIBarButtonItem(title: "Send me", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
         navigationItem.rightBarButtonItem = rightNavButton
@@ -87,8 +87,13 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         //
         selectedImageView.image = selectImage
         //selectedImageView.contentMode = .scaleToFil
-        
+        print("burası")
         // Do any additional setup after loading the view.
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+       
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -194,6 +199,7 @@ override func viewWillDisappear(_ animated: Bool) {
                                      isteğe bağlı format için
                                      ////formatter.dateFormat="dd/MM/yyyy HH:mm"
                                      */
+                                    formatter.dateFormat = "DD/MM/YYYY"
                                     formatter.dateStyle = .short
                                     formatter.timeStyle = .medium
                                     formatter.locale = Locale.current
@@ -298,8 +304,11 @@ override func viewWillDisappear(_ animated: Bool) {
                        
                         print("Loaded")
                         self.uploadTask?.removeAllObservers()
-                        self.dismiss(animated: true, completion: nil)
-                        self.performSegue(withIdentifier: "toTabBarView", sender: nil)
+                        
+                        self.dismiss(animated: true, completion: {
+                            self.performSegue(withIdentifier: "toTabBarView", sender: nil)
+                        })
+                       
                     }
                    
                 }

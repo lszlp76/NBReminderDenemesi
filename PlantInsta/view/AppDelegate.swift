@@ -8,53 +8,11 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-
+import AuthenticationServices
 @available(iOS 13.0, *)
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    
-    
-    /*func sign(_ signIn: GIDSignIn!,
-                  didSignInFor user: GIDGoogleUser!,
-                  withError error: Error!) {
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                               accessToken: authentication.accessToken)
-        Auth.auth().signIn(with: credential, completion: { (user, error) -> Void in
-                           if error != nil {
-                               print("Problem at signing in with google with error : \(error)")
-                           } else if error == nil {
-                               print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.uid)")
-                               print("signed in")
-                               
-                               let firstusage = UserDefaults.standard
-                               if firstusage.integer(forKey: "firstUsage") == 1 {
-                                   print("onboarding dont start")
-                                   let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
-                                   
-                                   self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
-                               }
-                               else {
-                                   firstusage.set(1,forKey: "firstUsage")
-                                
-                                   firstusage.synchronize()
-                                   // onboarding pages.
-                                   print("onboarding starts")
-                                   let mainStoryBoard = UIStoryboard (name: "Main",bundle: nil)
-                                   
-                                   self.window?.rootViewController?.performSegue(withIdentifier: "toOnboardingView", sender: nil)
-                               }
-                               
-                               
-                           }
-                       })
-            }
-
-            // Post notification after user successfully sign in
-            NotificationCenter.default.post(name: .signInGoogleCompleted, object: nil)
-        }
-    
-*/
 
     var window: UIWindow?
    
@@ -71,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        window?.rootViewController = ViewController.instantiate()
         
-        
+        // self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
         
        
                     

@@ -116,36 +116,17 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
         } else {
         print("Login Successful.")
             
+            self.dismiss(animated: true) {
+                self.performSegue(withIdentifier: "toPlantList", sender: nil)
             
-            let firstusage = UserDefaults.standard
-            if firstusage.integer(forKey: "firstUsage") == 1 {
-                print("onboarding doesnt start")
-                
-                self.dismiss(animated: true) {
-                    self.performSegue(withIdentifier: "toPlantList", sender: nil)
-                }
-                
             }
-            else {
-                firstusage.set(1,forKey: "firstUsage")
-             
-                firstusage.synchronize()
-                // onboarding pages.
-                print("onboarding starts")
-                self.dismiss(animated: true) {
-                    self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
-                }
-                
-            }
-            
             
             
         }
             
             
          
-        //This is where you should add the functionality of successful login
-        //i.e. dismissing this view or push the home view controller etc
+        
     }
     }
     override func viewDidLoad() {
@@ -157,7 +138,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-        //GIDSignIn.sharedInstance().signIn()
+      
         
         /* background bir imageview içinde atıp arka plan yapıyor*/
         backgroundImageView = UIImageView ( frame: view.bounds)
@@ -236,6 +217,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
     }
     @IBAction func signUpClicked(_ sender: Any) {
         makeAlert(title : "Membership" , message: "Type your prefered e-mail and password then press SignUp link")
+        
         if emailtext.text != ""  && passwordText.text != ""
         {
             Auth.auth().createUser(withEmail: emailtext.text!, password: passwordText.text!) { (authData, error) in

@@ -58,13 +58,14 @@ class MenuListViewController: UIViewController , UITableViewDelegate,UITableView
         }else
         {
             
-           
-            
             do {
                 try
                 Auth.auth().signOut()
-               
-                self.performSegue(withIdentifier: "toViewController", sender: nil)
+                self.dismiss(animated: false) {
+                    print("logout succeeded")
+                  self.performSegue(withIdentifier: "toViewController", sender: nil)
+                }
+                
                 
                 }catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)

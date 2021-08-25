@@ -201,7 +201,7 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGallery"
         {
-            let destinationVC = segue.destination as! UploadViewController
+            let destinationVC = segue.destination as! CustomCameraViewController//UploadViewController
             destinationVC.entryFromFeed = self.choosenPlant
             destinationVC.postCountValue = self.postCounterValue
             

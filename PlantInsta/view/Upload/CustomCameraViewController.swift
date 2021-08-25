@@ -12,6 +12,9 @@ import AVFoundation
 
 class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate,  UITabBarControllerDelegate,
                                   UIPopoverPresentationControllerDelegate,UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+    @IBAction func selectPictures(_ sender: Any) {
+       pickImage()
+    }
     @IBOutlet weak var pushButton: UIButton!
     
     
@@ -21,10 +24,13 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
     var imagePickerController: UIImagePickerController?
     
     
-
+    
     @IBOutlet weak var previewView: UIView!
     //@IBOutlet weak var captureImageView: UIImageView!
-    
+  
+    @IBOutlet weak var buttonStack: UIStackView!
+   
+   
     @IBAction func didTakePhoto(_ sender: Any) {
         
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecType.jpeg])
@@ -83,13 +89,19 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
             tabBarController?.tabBar.items![1].isEnabled = true
         }
         
-        let rightButton = UIBarButtonItem(title: "My Pictures", style: UIBarButtonItem.Style.plain, target: self, action: #selector(pickImage))
-        navigationItem.rightBarButtonItem = rightButton
+//        let rightButton = UIBarButtonItem(title: "My Pictures", style: UIBarButtonItem.Style.plain, target: self, action: #selector(pickImage))
+//        navigationItem.rightBarButtonItem = rightButton
+
+        //pushButton.layer.zPosition = 5
+        //selectPicture.layer.zPosition = 6
+        buttonStack.layer.zPosition = 5
         
-    
+       
+        
         
         // Do any additional setup after loading the view.
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -127,7 +139,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
     }
     func setupLivePreview(){
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        videoPreviewLayer.videoGravity = .resizeAspect
+        videoPreviewLayer.videoGravity = .resize
         videoPreviewLayer.connection?.videoOrientation = .portrait
         previewView.layer.addSublayer(videoPreviewLayer)
     }
@@ -141,6 +153,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
         selectedImage = image
         
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,7 +191,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
         
     }
     
-    @objc func pickImage() {
+   @objc func pickImage() {
          
          
          if self.imagePickerController != nil {
@@ -240,11 +253,16 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
             
         selectedImage = image
         picker.dismiss(animated: true)
-        self.performSegue(withIdentifier: "toSelectImage", sender: nil)
+        
+        self.dismiss(animated: true) {
+            picker.delegate = nil
+            self.imagePickerController = nil
+            self.performSegue(withIdentifier: "toSelectImage", sender: nil)
+        }
          
         //{
-//                 picker.delegate = nil
-//                 self.imagePickerController = nil
+//
+//
 //             }
       
         
