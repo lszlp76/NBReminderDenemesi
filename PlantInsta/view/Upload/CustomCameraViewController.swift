@@ -153,7 +153,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
         selectedImage = image
         
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

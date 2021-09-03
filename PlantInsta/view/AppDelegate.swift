@@ -27,9 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          
       
 
-//        window?.rootViewController = ViewController.instantiate()
+         
         
-        // self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
+        self.window?.rootViewController?.performSegue(withIdentifier: "toPlantList", sender: nil)
         
        
                     

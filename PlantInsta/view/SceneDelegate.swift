@@ -22,26 +22,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let tabBar = board.instantiateViewController(identifier: "tabBar") as! UITabBarController
             
             
-////            let firstusage = UserDefaults.standard
-////            if firstusage.integer(forKey: "firstUsage") == 1 {
-////                print("onboarding doesnt start")
-////                
-////                self.window?.rootViewController!.dismiss(animated: true) {
-////                    self.window?.rootViewController!.performSegue(withIdentifier: "toPlantList", sender: nil)
-////                }
-////                
-////            }
-////            else {
-////                firstusage.set(1,forKey: "firstUsage")
-////             
-////                firstusage.synchronize()
-////                // onboarding pages.
-////                print("onboarding starts")
-////                self.window?.rootViewController!.dismiss(animated: true) {
-////                    self.window?.rootViewController!.performSegue(withIdentifier:  "toOnboardingView",sender: nil) //
-////                }
-////                
-//            }
+            let firstusage = UserDefaults.standard
+            if firstusage.integer(forKey: "firstUsage") == 1 {
+                print("onboarding doesnt start")
+                
+                self.window?.rootViewController!.dismiss(animated: true) {
+                    self.window?.rootViewController!.performSegue(withIdentifier: "toPlantList", sender: nil)
+                }
+
+            }
+            else {
+                firstusage.set(1,forKey: "firstUsage")
+
+                firstusage.synchronize()
+                // onboarding pages.
+                print("onboarding starts")
+                self.window?.rootViewController!.dismiss(animated: true) {
+                    self.window?.rootViewController!.performSegue(withIdentifier:  "toOnboardingView",sender: nil) //
+                }
+
+            }
             window?.rootViewController = tabBar // İlk açılacak ekran tabBar olsun
             
             

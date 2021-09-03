@@ -305,10 +305,8 @@ override func viewWillDisappear(_ animated: Bool) {
                        
                         print("Loaded")
                         self.uploadTask?.removeAllObservers()
+                        self.performSegue(withIdentifier: "toTabBarView", sender: nil)
                         
-                        self.dismiss(animated: true, completion: {
-                            self.performSegue(withIdentifier: "toTabBarView", sender: nil)
-                        })
                        
                     }
                    

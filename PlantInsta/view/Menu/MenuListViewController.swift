@@ -37,7 +37,7 @@ class MenuListViewController: UIViewController , UITableViewDelegate,UITableView
         menulist.delegate = self
         menulist.dataSource = self
         
-        title = "Menu"
+        title = "About"
         
        /*
         utilitylist.append("How to use ?")

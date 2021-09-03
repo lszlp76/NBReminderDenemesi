@@ -116,16 +116,29 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
         } else {
         print("Login Successful.")
             
-            self.dismiss(animated: true) {
+            let firstusage = UserDefaults.standard
+            if firstusage.integer(forKey: "firstUsage") == 1 {
+                print("onboarding dont start")
+               
                 self.performSegue(withIdentifier: "toPlantList", sender: nil)
-            
+            }
+            else {
+                firstusage.set(1,forKey: "firstUsage")
+             
+                firstusage.synchronize()
+                // onboarding pages.
+                print("onboarding starts")
+                self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
             }
             
             
-        }
             
+                
             
          
+            
+            
+        }
         
     }
     }
