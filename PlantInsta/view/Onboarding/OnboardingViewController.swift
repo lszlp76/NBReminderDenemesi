@@ -89,6 +89,16 @@ class OnboardingViewController: UIViewController , PaperOnboardingDataSource, Pa
         }
     }
     
+    @IBAction func getStartedClicked(_ sender: Any) {
+        
+            self.performSegue(withIdentifier: "toPlantList", sender: nil)
+        
+        
+        
+       
+        
+       
+    }
     func onboardingWillTransitonToIndex(_ index: Int) {
         if index == 1{
             if self.getStartedButton.alpha == 1 {

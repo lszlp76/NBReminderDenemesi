@@ -20,12 +20,12 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     // entryFromFeed nil ise plant , 1 ise feed demek olacak
    
    
-   
+    
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var diaryNameText: UITextField!
     
     
-    @IBOutlet weak var sendImage: UIButton!
+   // @IBOutlet weak var sendImage: UIButton!
    
     @IBOutlet var commentText: UITextView!
     
@@ -49,6 +49,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         progressView.isHidden = true
         rightNavButton = UIBarButtonItem(title: "Send me", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
         navigationItem.rightBarButtonItem = rightNavButton

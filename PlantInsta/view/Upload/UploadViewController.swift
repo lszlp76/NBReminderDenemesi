@@ -20,7 +20,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
     var selectedImage : UIImage!// galeriden seçilen resim olacak
     var entryFromFeed : String!
     var postCountValue: String?
-    @IBOutlet weak var selectImage: UIButton!
+   // @IBOutlet weak var selectImage: UIButton!
     @IBOutlet weak var cameraContainerView: UIView!
     
 //    override func viewDidAppear(_ animated: Bool) {
@@ -41,8 +41,8 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
             tabBarController?.tabBar.items![1].isEnabled = false
         }
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.tabBarController?.delegate = self
         
         imagePickerController?.delegate = self
@@ -181,7 +181,7 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
            
             
         selectedImage = image
-        picker.dismiss(animated: true)
+        //picker.dismiss(animated: true)
         self.performSegue(withIdentifier: "toSelectImage", sender: nil)
          
         //{
@@ -213,8 +213,8 @@ class UploadViewController: UIViewController,UIPopoverPresentationControllerDele
                  
                  let destinationVC = segue.destination as! SelectImageViewController
                  destinationVC.selectImage = selectedImage
-                destinationVC.entryFromFeed = self.entryFromFeed
-                destinationVC.postCountValue = self.postCountValue
+                 destinationVC.entryFromFeed = self.entryFromFeed
+                 destinationVC.postCountValue = self.postCountValue
                 
              }
          

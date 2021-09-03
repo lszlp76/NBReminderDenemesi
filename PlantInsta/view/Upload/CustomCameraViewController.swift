@@ -252,9 +252,10 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
            
             
         selectedImage = image
-        picker.dismiss(animated: true)
+        
         
         self.dismiss(animated: true) {
+            picker.dismiss(animated: true)
             picker.delegate = nil
             self.imagePickerController = nil
             self.performSegue(withIdentifier: "toSelectImage", sender: nil)
