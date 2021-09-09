@@ -86,6 +86,7 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         let formatter = DateFormatter()
         formatter.dateFormat = "DD/MM/YYYY"
         // oluşturulan procell in plantcell sınıfına bağlanması
+       
         
         cell.imageView.sd_setImage(with: URL ( string: plantlist[indexPath.item].plantAvatar))
         cell.createdDate.text = plantlist[indexPath.item].plantFirstDate

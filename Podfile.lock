@@ -480,6 +480,7 @@ DEPENDENCIES:
   - FirebaseUI
   - GoogleSignIn
   - MaterialComponents/BottomAppBar
+  - MDFInternationalization
   - paper-onboarding
   - SDWebImage
 
@@ -552,6 +553,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
 
-PODFILE CHECKSUM: bc1f9a4da447f697dca8d9231ba61a58939f6527
+PODFILE CHECKSUM: 2ee328204912a96b950c56380ef58d590cc47025
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.0.beta.1
