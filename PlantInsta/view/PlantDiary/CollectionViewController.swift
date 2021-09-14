@@ -92,6 +92,8 @@ class CollectionViewController: UIViewController, UICollectionViewDelegate, UICo
         cell.createdDate.text = plantlist[indexPath.item].plantFirstDate
         cell.plantDiartName.text = plantlist[indexPath.item].plantName
         
+        
+        
         if (searchPlant.isActive)
         {
             cell.imageView.sd_setImage(with: URL (string: filteredPlants[indexPath.row].plantAvatar))

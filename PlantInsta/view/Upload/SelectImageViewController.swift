@@ -51,7 +51,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         super.viewWillAppear(animated)
         
         progressView.isHidden = true
-        rightNavButton = UIBarButtonItem(title: "Send me", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
+        rightNavButton = UIBarButtonItem(title: "Send", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
         navigationItem.rightBarButtonItem = rightNavButton
        rightNavButton.isEnabled = false
         
@@ -162,7 +162,7 @@ override func viewWillDisappear(_ animated: Bool) {
     @objc func sendPlant(){
         
         if diaryNameText!.text != "" && commentText!.text != ""{
-        
+            diaryNameText.tag = 1
             if uploadTask == nil {
                let data = Data()
                 rightNavButton.isEnabled = false
@@ -322,7 +322,7 @@ override func viewWillDisappear(_ animated: Bool) {
             }
             
         }else {
-            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "deneme mesajı")
+            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "Diary name must be filled !")
         }
         
         

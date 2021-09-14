@@ -24,12 +24,31 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
    */
     
 
-    
+    /*
+     Apple Id ile giriş yaparsan , girişten sonra ilerleme kısmı
+     */
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let user = authDataResult?.user{
             print("you've signed as \(user.uid). Your email is : \(user.email ?? "")")
-            self.performSegue(withIdentifier: "toPlantList", sender: nil)
+          
+               
+                let firstusage = UserDefaults.standard
+                if firstusage.integer(forKey: "firstUsage") == 1 {
+                   
+                    self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                    
+                }
+                else {
+                    firstusage.set(1,forKey: "firstUsage")
+                 
+                    firstusage.synchronize()
+                    // onboarding pages.
+                    print("onboarding starts")
+                    self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                }
+            
+            
         }
     }
     
@@ -77,8 +96,8 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
             authUI.delegate = self
             
             let authViewController = authUI.authViewController()
-            self.present(authViewController, animated: true)
             
+            self.present(authViewController, animated: true)
             
         }
         
@@ -229,8 +248,7 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
         }
     }
     @IBAction func signUpClicked(_ sender: Any) {
-        makeAlert(title : "Membership" , message: "Type your prefered e-mail and password then press SignUp link")
-        
+       
         if emailtext.text != ""  && passwordText.text != ""
         {
             Auth.auth().createUser(withEmail: emailtext.text!, password: passwordText.text!) { (authData, error) in
@@ -238,14 +256,33 @@ class ViewController: UIViewController,UITextFieldDelegate,FUIAuthDelegate ,GIDS
                     self.makeAlert(title : "Sign Up Error",message: error?.localizedDescription ?? "Error")
                 }else
                 {
-                    self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                    let firstusage = UserDefaults.standard
+                    if firstusage.integer(forKey: "firstUsage") == 1 {
+                       
+                        self.performSegue(withIdentifier: "toPlantList", sender: nil)
+                        
+                    }
+                    else {
+                        firstusage.set(1,forKey: "firstUsage")
+                     
+                        firstusage.synchronize()
+                        // onboarding pages.
+                        print("onboarding starts")
+                        self.performSegue(withIdentifier: "toOnboardingView", sender: nil)
+                    }
+                    
+                    
+                    
                 }
                 
             }
             
         }else {
-            makeAlert(title : "Sign Up Error",message: "Username/Password Denied")
-           
+            
+            makeAlert(title : "Membership" , message: "Type your prefered e-mail and password then press SignUp link")
+            
+            
+            
         }
        
     }

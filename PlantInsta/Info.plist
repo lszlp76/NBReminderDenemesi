@@ -34,9 +34,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>This application needs to use the camera of your device</string>
+	<string>PlantInsta want to use your device's camera to take photo of your plant. You can delete or change it using PlantInsta when ever you want.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Our application needs permission to write photos...</string>
+	<string>Our application needs permission to write photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Our application needs permission to write photos</string>
 	<key>UIApplicationSceneManifest</key>
