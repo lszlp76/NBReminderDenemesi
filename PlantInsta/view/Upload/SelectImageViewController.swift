@@ -50,6 +50,12 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // eğer feed yazılacak ise diaryname gözükmemeli
+        if self.entryFromFeed != nil {
+            diaryNameText.isHidden = true
+            title = entryFromFeed
+        }
+        
         progressView.isHidden = true
         rightNavButton = UIBarButtonItem(title: "Send", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
         navigationItem.rightBarButtonItem = rightNavButton
@@ -96,10 +102,13 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         
        
     }
+    // comment altında entera basılınca olan durum
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
-            print("enter")
-           commentText.resignFirstResponder()
+           
+            
+            //  commenttext i bitirir
+           // commentText.resignFirstResponder()
             return false
         }
         return true
@@ -108,8 +117,8 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     //comment text içine tıklandığında textview i temizler
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        commentText.text = ""
         
+        rightNavButton.isEnabled = true
         return true
     }
     //comment text işi bittiğinde sendme butonunu aktif eder.
@@ -117,7 +126,8 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     func textViewDidEndEditing(_ textView: UITextView) {
        
         if commentText.text != "" {
-            print("commenttext dou")
+            
+            
             rightNavButton.isEnabled = true
         }else {
             rightNavButton.isEnabled = false
@@ -127,7 +137,7 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == diaryNameText {
-         
+         print("enter a basıldı")
            
         }
        return true
@@ -161,7 +171,15 @@ override func viewWillDisappear(_ animated: Bool) {
    
     @objc func sendPlant(){
         
-        if diaryNameText!.text != "" && commentText!.text != ""{
+        if entryFromFeed != nil {
+            diaryNameText.text = entryFromFeed.description
+        }
+        
+        
+        if  diaryNameText.text!.filter({ $0 != " " }).count > 0 {
+            /*
+             yukardaki ifade diaryname text içindeki boşluk olmayan karakterlerin sayısı 0 'dan farklı ise mantığıdır.
+             */
             diaryNameText.tag = 1
             if uploadTask == nil {
                let data = Data()
@@ -256,6 +274,7 @@ override func viewWillDisappear(_ animated: Bool) {
                                         }
                                         
                                     }else {
+                                        
                                         do
                                         // plant olarak eklemek
                                         {
@@ -322,7 +341,7 @@ override func viewWillDisappear(_ animated: Bool) {
             }
             
         }else {
-            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "Diary name must be filled !")
+            ServingUtility().makeAlert(vc: self,title: "Loading Alert",message: "Diary name  must be filled !")
         }
         
         

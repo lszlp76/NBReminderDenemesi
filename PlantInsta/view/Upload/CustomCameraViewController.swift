@@ -82,7 +82,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
         
         imagePickerController?.delegate = self
         if entryFromFeed != nil {
-            title = "Add New Page"
+           
             tabBarController?.tabBar.items![1].isEnabled = false
         }else {
             title = "New Plant"
@@ -158,11 +158,12 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         if entryFromFeed != nil {
-            title = "Add New Page"
+            title = "\(entryFromFeed.description)'s new page"
+            
             tabBarController?.tabBar.items![1].isEnabled = false
             tabBarController?.tabBar.items![1].title = "New Diary"
         }else {
-            title = "New Plant"
+            title = "New Diary "
             tabBarController?.tabBar.items![1].isEnabled = false
         }
     }
@@ -173,7 +174,7 @@ class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegat
         self.captureSession.stopRunning()
         tabBarController?.tabBar.items![1].isEnabled = true
         tabBarController?.tabBar.items![1].title = "New Diary"
-        
+    
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
