@@ -51,16 +51,20 @@ class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFie
         super.viewWillAppear(animated)
         
         // eğer feed yazılacak ise diaryname gözükmemeli
-        if self.entryFromFeed != nil {
-            diaryNameText.isHidden = true
-            title = entryFromFeed
-        }
+        
         
         progressView.isHidden = true
         rightNavButton = UIBarButtonItem(title: "Send", style: UIBarButtonItem.Style.plain, target: self, action: #selector(sendPlant))
         navigationItem.rightBarButtonItem = rightNavButton
-       rightNavButton.isEnabled = false
+       
         
+        if self.entryFromFeed != nil {
+            diaryNameText.isHidden = true
+            title = entryFromFeed
+            rightNavButton.isEnabled = true
+        }else {
+            rightNavButton.isEnabled = false
+        }
         
         diaryNameText.delegate = self
         commentText.delegate = self
