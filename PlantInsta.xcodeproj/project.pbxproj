@@ -57,7 +57,7 @@
 		F9768AE62669203800EE7B94 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		F9B3001526CD64720094C1F4 /* CustomCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCameraViewController.swift; sourceTree = "<group>"; };
 		F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesirableSpec.swift; sourceTree = "<group>"; };
-		F9CB298D2629856E00144B28 /* PlantInsta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlantInsta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CB298D2629856E00144B28 /* Neseli Bahce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Neseli Bahce.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CB29902629856E00144B28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9CB29922629856E00144B28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F9CB29942629856E00144B28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = "../New Group/ViewController.swift"; sourceTree = "<group>"; };
@@ -127,10 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				F9768AE02669199B00EE7B94 /* Onboarding */,
-				F9CB29962629856E00144B28 /* Main.storyboard */,
 				F9B6682F26516EB8005EE437 /* SignIn */,
 				F9232BE72631615F00AAD5B0 /* Upload */,
-				F9215A08262EB86300DE7CE4 /* Menu */,
 				F9D36350262E0E91002460B3 /* FeedList */,
 				F9D3634F262E0E6E002460B3 /* PlantDiary */,
 				F9CB29902629856E00144B28 /* AppDelegate.swift */,
@@ -170,7 +168,7 @@
 		F9CB298E2629856E00144B28 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F9CB298D2629856E00144B28 /* PlantInsta.app */,
+				F9CB298D2629856E00144B28 /* Neseli Bahce.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,11 +176,13 @@
 		F9CB298F2629856E00144B28 /* PlantInsta */ = {
 			isa = PBXGroup;
 			children = (
+				F9CB29962629856E00144B28 /* Main.storyboard */,
 				F9215A0D262EC85600DE7CE4 /* PlantInsta.entitlements */,
 				F9D3632D262DB1B8002460B3 /* viewmodel */,
 				F9D3632C262DB1B2002460B3 /* model */,
 				F96C7F11262D62C0002F263A /* view */,
 				F9CB29992629857100144B28 /* Assets.xcassets */,
+				F9215A08262EB86300DE7CE4 /* Menu */,
 				F9CB29A5262985D000144B28 /* GoogleService-Info.plist */,
 				F9CB299B2629857100144B28 /* LaunchScreen.storyboard */,
 				F9CB299E2629857100144B28 /* Info.plist */,
@@ -234,9 +234,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F9CB298C2629856E00144B28 /* PlantInsta */ = {
+		F9CB298C2629856E00144B28 /* Neseli Bahce */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "PlantInsta" */;
+			buildConfigurationList = F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "Neseli Bahce" */;
 			buildPhases = (
 				28E714DE44461D99C37D1B05 /* [CP] Check Pods Manifest.lock */,
 				F9CB29892629856E00144B28 /* Sources */,
@@ -249,9 +249,9 @@
 			);
 			dependencies = (
 			);
-			name = PlantInsta;
+			name = "Neseli Bahce";
 			productName = PlantInsta;
-			productReference = F9CB298D2629856E00144B28 /* PlantInsta.app */;
+			productReference = F9CB298D2629856E00144B28 /* Neseli Bahce.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -281,7 +281,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F9CB298C2629856E00144B28 /* PlantInsta */,
+				F9CB298C2629856E00144B28 /* Neseli Bahce */,
 			);
 		};
 /* End PBXProject section */
@@ -593,7 +593,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "PlantInsta" */ = {
+		F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "Neseli Bahce" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F9CB29A22629857100144B28 /* Debug */,

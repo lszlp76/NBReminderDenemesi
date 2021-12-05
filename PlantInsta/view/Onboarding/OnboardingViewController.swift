@@ -25,15 +25,14 @@ class OnboardingViewController: UIViewController , PaperOnboardingDataSource, Pa
         let rocket  = UIImage(named: "pageone") as UIImage?
         let rocket3 = UIImage(named: "pagethree") as UIImage?
         let rocket2 = UIImage(named: "pagetwo" ) as UIImage?
-        let icon = UIImage( named: "logo") as UIImage?
+        let icon = UIImage( named: "logoneseliBahce") as UIImage?
         //let fontColor1 = UIColor (red: 206/255, green: 147/255, blue: 216/255, alpha: 1)
         let fontColor2 = UIColor (red: 204/255, green: 71/255, blue: 188/255, alpha: 1)
         
         return [
             OnboardingItemInfo(informationImage: rocket!,
                                      title: "Keep a diary for your plant",
-                                     description: "Observe the growth of your seedlings in your garden, the flowers on your balcony, and the plants in your field, photograph them and take some notes.",
-                                     pageIcon: icon!,
+                                     description: "Observe the growth of your seedlings in your garden, the flowers on your balcony, and the plants in your field, photograph them and take some notes.",                                     pageIcon: icon!,
                                      color: bgcolor2,
                                      titleColor: fontColor2,
                                      descriptionColor: fontColor2,
