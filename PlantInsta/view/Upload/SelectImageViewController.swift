@@ -10,9 +10,38 @@ import FirebaseStorage
 import FirebaseFirestoreSwift
 import Firebase
 
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 class SelectImageViewController: UIViewController ,UITextViewDelegate, UITextFieldDelegate {
-     
+     // Reminder Ekleme Noktası
+    @IBAction func addScheduledReminder(_ sender: UIButton) {
+        
+        let myDatePicker: UIDatePicker = UIDatePicker()
+        myDatePicker.timeZone = .current
+        myDatePicker.preferredDatePickerStyle = .inline
+            myDatePicker.frame = CGRect(x: 0, y: 15, width: 270, height: 200)
+        let addReminderAlertBox = UIAlertController(title: "Hatırlatıcı \n\n\n\n\n\n\n\n", message: nil, preferredStyle: .alert)
+        addReminderAlertBox.view.addSubview(myDatePicker)
+        addReminderAlertBox.addTextField {
+            reminderTextField in
+            reminderTextField.placeholder = "Hatırlatma mesajınızı girin"
+        }
+        
+        let selectAction = UIAlertAction(title: "Ekle", style: .default, handler: { _ in
+                print("Selected Date: \(myDatePicker.date)")
+            //buraya reminderSet gelecek
+            })
+            let cancelAction = UIAlertAction(title: "İptal", style: .cancel, handler: nil)
+        addReminderAlertBox.addAction(selectAction)
+        addReminderAlertBox.addAction(cancelAction)
+            present(addReminderAlertBox, animated: true)
+    }
+    @IBAction func takvimdeneme(_ sender: Any) {
+        
+        
+        
+        
+        
+    }
     var selectImage: UIImage!
     var entryFromFeed : String!
     var postCountValue : String?

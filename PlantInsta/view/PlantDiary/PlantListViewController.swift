@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
-@available(iOS 13.0, *)
+@available(iOS 13.413.4, *)
 class PlantListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate, UITabBarControllerDelegate,   UISearchBarDelegate, UISearchResultsUpdating{
     
     
@@ -429,7 +429,7 @@ class PlantListViewController: UIViewController, UITableViewDelegate, UITableVie
     
 }
 
-@available(iOS 13.0, *)
+@available(iOS 13.413.4, *)
 extension PlantListViewController : tableViewNew {
     
    

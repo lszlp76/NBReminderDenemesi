@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 
 class CustomCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate,  UITabBarControllerDelegate,
                                   UIPopoverPresentationControllerDelegate,UIImagePickerControllerDelegate & UINavigationControllerDelegate{

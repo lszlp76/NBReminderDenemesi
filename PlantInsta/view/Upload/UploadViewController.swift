@@ -10,7 +10,7 @@ import UIKit
  kamera için
  https://www.ioscreator.com/tutorials/take-photo-ios-tutorial
  */
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 class UploadViewController: UIViewController,UIPopoverPresentationControllerDelegate,
                             UITabBarControllerDelegate,  UIImagePickerControllerDelegate & UINavigationControllerDelegate {  //2
 

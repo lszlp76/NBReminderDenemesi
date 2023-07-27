@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
-@available(iOS 13.0, *)
+@available(iOS 13.413.4, *)
 class CollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout,
                                 UISearchBarDelegate, UISearchResultsUpdating, UITabBarControllerDelegate {
     

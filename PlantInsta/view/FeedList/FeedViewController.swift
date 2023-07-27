@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SDWebImage
 
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource, UITabBarControllerDelegate , UITabBarDelegate{
     
     var plantDate : String?
@@ -373,7 +373,7 @@ extension Data {
 
 //5'in devamı ( tableview içindeki eleman tıklanma )
 //5 yaratılan yeni özelliği bu viewcontroller a  ekle
-@available(iOS 13.0, *)
+@available(iOS 13.4, *)
 extension FeedViewController: TableViewNew {
     
     func onClickedShare(index: Int) {
@@ -387,7 +387,7 @@ extension FeedViewController: TableViewNew {
             let pngImageData = image.pngData()
 
             // Write the png image into a filepath and return the filepath in NSURL
-            let pngImageURL = pngImageData?.dataToFile(fileName: "SharedByPlantInsta.png")
+            let pngImageURL = pngImageData?.dataToFile(fileName: "Shared by Neseli Bahce.png")
 
             // Create the Array which includes the files you want to share
             var filesToShare = [Any]()
@@ -442,14 +442,14 @@ extension FeedViewController: TableViewNew {
             // photos a yazmak için bu kod yeterli.
             //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             
-            let album = CustomPhotoAlbum("PlantInsta")
+            let album = CustomPhotoAlbum("Neseli Bahce")
             album.save(image)
            
             
             }
         
         
-        makeAlert(title: "Download", message: "Download completed!\nCheck your PlantInsta Album")
+        makeAlert(title: "Download", message: "Download completed!\nCheck your Neseli Bahce Album")
         
        
     }

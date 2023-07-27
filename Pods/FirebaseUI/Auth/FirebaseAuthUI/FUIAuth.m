@@ -338,7 +338,7 @@ static NSString *const kFirebaseAuthUIFrameworkMarker = @"FirebaseUI-iOS";
 }
 
 - (void)useEmulatorWithHost:(NSString *)host port:(NSInteger)port {
-//  [self.auth useEmulatorWithHost:host port:port];
+  [self.auth useEmulatorWithHost:host port:port];
   self.emulatorEnabled = YES;
 }
 

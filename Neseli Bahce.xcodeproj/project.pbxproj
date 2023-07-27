@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BBA7053609D1B86228A960A /* Pods_Neseli_Bahce.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64184080DE6EFBC99064D6DF /* Pods_Neseli_Bahce.framework */; };
 		F90D4A32263817FF00E9615E /* Servie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90D4A31263817FF00E9615E /* Servie.swift */; };
 		F914B9C026C54A9200BE0979 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914B9BF26C54A9200BE0979 /* CollectionViewController.swift */; };
 		F914B9C226C54AA900BE0979 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F914B9C126C54AA900BE0979 /* CollectionViewCell.swift */; };
@@ -19,7 +20,6 @@
 		F96C7F24262D6EA6002F263A /* MenuListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F96C7F23262D6EA6002F263A /* MenuListViewController.swift */; };
 		F9768ADF2669162C00EE7B94 /* CustomAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768ADE2669162C00EE7B94 /* CustomAlbum.swift */; };
 		F9768AE2266919BF00EE7B94 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE1266919BF00EE7B94 /* OnboardingViewController.swift */; };
-		F9768AE326691D1400EE7B94 /* Pods_PlantInsta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */; };
 		F9768AE72669203800EE7B94 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9768AE62669203800EE7B94 /* OnboardingView.swift */; };
 		F9B3001626CD64720094C1F4 /* CustomCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B3001526CD64720094C1F4 /* CustomCameraViewController.swift */; };
 		F9B6680C264EA7AF005EE437 /* DesirableSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6680B264EA7AF005EE437 /* DesirableSpec.swift */; };
@@ -39,8 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlantInsta.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.debug.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.debug.xcconfig"; sourceTree = "<group>"; };
+		64184080DE6EFBC99064D6DF /* Pods_Neseli_Bahce.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neseli_Bahce.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D728276E8532DA37DF22E9F /* Pods-Neseli Bahce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neseli Bahce.release.xcconfig"; path = "Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce.release.xcconfig"; sourceTree = "<group>"; };
+		91B81CE52C0ADE7A4AD23ED3 /* Pods-Neseli Bahce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neseli Bahce.debug.xcconfig"; path = "Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce.debug.xcconfig"; sourceTree = "<group>"; };
 		F90D4A31263817FF00E9615E /* Servie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servie.swift; sourceTree = "<group>"; };
 		F914B9BF26C54A9200BE0979 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		F914B9C126C54AA900BE0979 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		F9D36356262E1384002460B3 /* FeedPlantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPlantModel.swift; sourceTree = "<group>"; };
 		F9D3635D262E1595002460B3 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		F9D36360262E2691002460B3 /* BigImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigImageViewController.swift; sourceTree = "<group>"; };
-		FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlantInsta.release.xcconfig"; path = "Target Support Files/Pods-PlantInsta/Pods-PlantInsta.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9768AE326691D1400EE7B94 /* Pods_PlantInsta.framework in Frameworks */,
+				3BBA7053609D1B86228A960A /* Pods_Neseli_Bahce.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,16 +90,16 @@
 		01E78D0C2CD34E4D847CA424 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */,
-				FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */,
+				91B81CE52C0ADE7A4AD23ED3 /* Pods-Neseli Bahce.debug.xcconfig */,
+				8D728276E8532DA37DF22E9F /* Pods-Neseli Bahce.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		4CD0CA46791F2055E1A43761 /* Frameworks */ = {
+		228731F6D629D622491FA0EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				23585A1998FA094E618E2543 /* Pods_PlantInsta.framework */,
+				64184080DE6EFBC99064D6DF /* Pods_Neseli_Bahce.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 				F9CB298F2629856E00144B28 /* PlantInsta */,
 				F9CB298E2629856E00144B28 /* Products */,
 				01E78D0C2CD34E4D847CA424 /* Pods */,
-				4CD0CA46791F2055E1A43761 /* Frameworks */,
+				228731F6D629D622491FA0EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,12 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9CB29A12629857100144B28 /* Build configuration list for PBXNativeTarget "Neseli Bahce" */;
 			buildPhases = (
-				28E714DE44461D99C37D1B05 /* [CP] Check Pods Manifest.lock */,
+				47D5254784EDC65B0AA9FDB4 /* [CP] Check Pods Manifest.lock */,
 				F9CB29892629856E00144B28 /* Sources */,
 				F9CB298A2629856E00144B28 /* Frameworks */,
 				F9CB298B2629856E00144B28 /* Resources */,
-				3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */,
-				A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */,
+				66AC91A0B02C989131E4E686 /* [CP] Embed Pods Frameworks */,
+				47270753E519E8A49FACABB3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,7 +302,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		28E714DE44461D99C37D1B05 /* [CP] Check Pods Manifest.lock */ = {
+		47270753E519E8A49FACABB3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		47D5254784EDC65B0AA9FDB4 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,45 +334,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PlantInsta-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Neseli Bahce-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3A64CC786CA8A0628406E92B /* [CP] Embed Pods Frameworks */ = {
+		66AC91A0B02C989131E4E686 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A993B5EE37325A0DAA6BEA0A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlantInsta/Pods-PlantInsta-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Neseli Bahce/Pods-Neseli Bahce-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -533,7 +533,7 @@
 		};
 		F9CB29A22629857100144B28 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 46C11A41E2EB2E527E2DA1BD /* Pods-PlantInsta.debug.xcconfig */;
+			baseConfigurationReference = 91B81CE52C0ADE7A4AD23ED3 /* Pods-Neseli Bahce.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -558,7 +558,7 @@
 		};
 		F9CB29A32629857100144B28 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF6E8C0BC9E9BCD24FAD716D /* Pods-PlantInsta.release.xcconfig */;
+			baseConfigurationReference = 8D728276E8532DA37DF22E9F /* Pods-Neseli Bahce.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
